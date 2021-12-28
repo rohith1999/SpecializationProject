@@ -2,7 +2,11 @@ package com.th.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+/**
+ * Book is a POJO class that has id,name, price and genre
+ * @author Rohith S
+ *
+ */
 @Entity
 public class Book {
 	

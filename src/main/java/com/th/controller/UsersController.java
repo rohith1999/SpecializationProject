@@ -1,9 +1,9 @@
 package com.th.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,67 +17,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.th.constants.PropertyConstant;
 import com.th.model.Book;
-import com.th.model.Users;
+import com.th.model.User;
 import com.th.repository.UsersRepository;
+import com.th.services.UserService;
 
+/**
+ * UsersController class allows you to authenticate and register a user
+ * 
+ * @author Rohith S
+ *
+ */
 @Controller
 @RequestMapping("users")
 public class UsersController {
-	
-	@Autowired
-	UsersRepository jpu;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	//login an old user
-	@RequestMapping(value="/auth", method=RequestMethod.POST)
-	public String auth (Users u){
-		Optional<Users> searchUser = jpu.findById(u.getUseremail());
-		if(searchUser.isPresent()) {
-			Users u1= searchUser.get();
-			if(passwordEncoder.matches(u.getPassword(), u1.getPassword())) {
 
-			     return "home";
-			}else {
-				return "login";
-			}
-			
-			
-			 
+	@Autowired
+	UserService userService;
 
-		}
-		else
-		  return "invalid";
+	/**
+	 * auth matches user password with encrypted password in database
+	 * 
+	 * @param user with properties useremail and password
+	 * @return String which redirects to home page or back to login page
+	 */
+	@RequestMapping(value = PropertyConstant.AUTH_USER, method = RequestMethod.POST)
+	public String authenticationUser(User user) {
+
+		return userService.findByUserEmail(user);
 
 	}
-	
-	
-	
-//	register a new user 
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register (Users u){
-		Optional<Users> searchUser = jpu.findById(u.getUseremail());
-		if(searchUser.isPresent()) {
-			Users u1= searchUser.get();
-			 
-		     return "login";
 
-		}
-		else {
-		   u.setPassword(passwordEncoder.encode(u.getPassword()));
-		  Users saveUser = jpu.save(u);
-		  return "home";	
-		}
+	/**
+	 * Register creates a new user for the application
+	 * 
+	 * @param userRegister has all the properties required to create a new user
+	 * @return String returns to home page if new user is created else goes to login
+	 *         page
+	 */
+	@RequestMapping(value = PropertyConstant.REGISTER_USER, method = RequestMethod.POST)
+	public String register(User userRegister) {
+
+		return userService.registerUser(userRegister);
 
 	}
-	
-	
-	
-	
-	
-	
 
 }

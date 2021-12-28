@@ -2,8 +2,8 @@ package com.th.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.th.model.Users;
+import com.th.model.User;
 
-public interface UsersRepository extends JpaRepository<Users,String> {
+public interface UsersRepository extends JpaRepository<User,String> {
 
 }

@@ -2,6 +2,7 @@ package com.th.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +10,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
+/**
+ * Userscart is a POJO class that has bookid, userid, and qunatity
+ * @author Rohith S
+ *
+ */
+@Table(name = "userscart")
 @Entity
 public class Userscart {
 
@@ -18,6 +23,7 @@ public class Userscart {
 private int bookid;
 private int userid; 
 private int quantity;
+
 public int getBookid() {
 	return bookid;
 }
