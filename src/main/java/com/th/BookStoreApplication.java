@@ -1,12 +1,13 @@
 package com.th;
 
 import org.springframework.boot.SpringApplication;
-
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * BookStoreApplication class helps in running the application
@@ -14,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author Rohith s
  *
  */
+@RestController
+@EnableAutoConfiguration
 @SpringBootApplication
 public class BookStoreApplication extends SpringBootServletInitializer {
 
