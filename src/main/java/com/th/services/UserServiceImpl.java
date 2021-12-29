@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 			if (passwordEncoder.matches(user.getPassword(), userFromDb.getPassword())) {
 
 				return "home";
+				
 			} else {
 				return "index";
 			}
