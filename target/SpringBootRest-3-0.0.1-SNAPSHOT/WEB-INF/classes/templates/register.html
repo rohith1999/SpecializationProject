@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" sizes="192x192" href="https://material.io/static/images/simple-lp/favicons/components-192x192.png">
+  <link rel="shortcut icon" href="https://material.io/static/images/simple-lp/favicons/components-72x72.png">
+
+  <!-- material look for the website -->
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web/dist/material-components-web.min.css">
+  <!-- javascript functionality of the mdc -->
+  <script src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
+
+   <!-- lottie animation -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+
+  <style>
+
+
+  :root {
+  --mdc-theme-primary: #ff82a0;
+  --mdc-theme-secondary: #ff82a0;
+    }
+
+
+
+body{
+  background-color: #fcb8ab
+}
+
+  .header {
+  display:flex;
+  width:100%;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  }
+
+
+
+
+  .book-title-div{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+
+    width: 100%;
+  }
+
+
+
+
+
+  .useremail, .password,.phoneno{
+   display: flex;
+   margin: 20px auto;
+   width: 300px;
+
+
+  }
+
+
+
+
+
+  .button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+  margin: auto;
+  }
+
+  .button-container button {
+  margin: 3px;
+}
+
+  </style>
+
+<body class="book-login">
+
+
+  <section class="header">
+
+    <div class="book-title-div">
+
+      <h1 class="book-store">Register</h1>
+
+    </div>
+
+
+
+  </section>
+
+
+  <form action="/users/register" method="post">
+
+    <!-- user email field -->
+    <label class="mdc-text-field mdc-text-field--filled useremail">
+    <span class="mdc-text-field__ripple"></span>
+    <input type="email" class="mdc-text-field__input" aria-labelledby="useremail-label" name="useremail" required>
+    <span class="mdc-floating-label" id="useremail-label">User Email</span>
+    <span class="mdc-line-ripple"></span>
+    </label>
+
+
+    <!-- phone number  -->
+    <label class="mdc-text-field mdc-text-field--filled phoneno">
+    <span class="mdc-text-field__ripple"></span>
+    <input type="number" minlength="10" class="mdc-text-field__input" aria-labelledby="phoneno-label" name="phoneno" required>
+    <span class="mdc-floating-label" id="phoneno-label" >Phone Number</span>
+    <span class="mdc-line-ripple"></span>
+    </label>
+
+    <!-- password -->
+    <label class="mdc-text-field mdc-text-field--filled password">
+    <span class="mdc-text-field__ripple"></span>
+    <input type="password" class="mdc-text-field__input" aria-labelledby="password-label" name="password" required>
+    <span class="mdc-floating-label" id="password-label">Password</span>
+
+    <span class="mdc-line-ripple"></span>
+
+
+
+  </label>
+
+  <div class="button-container">
+  <button type="button" class="mdc-button login">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label" onclick="window.location='/login';">
+      Login
+    </span>
+  </button>
+  <button type="submit" class="mdc-button mdc-button--raised register">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label">
+      Register
+    </span>
+  </button>
+</div>
+
+
+
+
+
+
+
+
+
+  </form>
+
+<!-- javascript implementation -->
+<script type="text/javascript">
+
+  const userField = new mdc.textField.MDCTextField(document.querySelector('.useremail'));
+  const passField = new mdc.textField.MDCTextField(document.querySelector('.password'));
+  const phoneField = new mdc.textField.MDCTextField(document.querySelector('.phoneno'));
+
+
+  const loginButton = mdc.ripple.MDCRipple.attachTo(document.querySelector('.login'));
+  const registerButton = mdc.ripple.MDCRipple.attachTo(document.querySelector('.register'));
+
+
+
+
+
+</script>
+
+
+</body>
+
+
+</html>
