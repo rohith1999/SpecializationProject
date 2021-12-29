@@ -1,7 +1,6 @@
 package com.th.services;
 
 import com.th.model.User;
-import com.th.repository.UsersRepository;
 
 public interface UserService {
 	

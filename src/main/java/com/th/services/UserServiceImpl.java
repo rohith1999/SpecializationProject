@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
 				return "home";
 			} else {
-				return "login";
+				return "index";
 			}
 
 		} else
