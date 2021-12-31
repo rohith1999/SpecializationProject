@@ -1,6 +1,9 @@
 package com.th.services;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.th.model.Admin;
+import com.th.model.Book;
 
 public interface AdminService {
 	
@@ -9,6 +12,9 @@ public interface AdminService {
 	 * @param admin
 	 * @return
 	 */
-	public String findByAdminId(Admin admin);
+	public ModelAndView findByAdminId(Admin admin);
+	public ModelAndView removeBook(int idbook);
+	public ModelAndView updateBook(Book book);
+
 
 }

@@ -18,10 +18,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author Rohith s
  *
  */
-@EnableAutoConfiguration
-@EnableWebMvc
-@Configuration
-@ComponentScan
+//@EnableAutoConfiguration
+//@EnableWebMvc
+//@Configuration
+//@ComponentScan
 @SpringBootApplication
 public class BookStoreApplication extends SpringBootServletInitializer {
 

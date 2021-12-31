@@ -1,5 +1,8 @@
 package com.th.model;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 /**
@@ -8,14 +11,23 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Book {
+public class Book implements Comparable<Book>,Serializable {
 	
 	@Id
 	private int idbook;
 	private String bookname;
 	private double bookprice;
 	private String genre;
+	private Timestamp booktimestamp;
 	
+	public Timestamp getBooktimestamp() {
+		return booktimestamp;
+	}
+
+	public void setBooktimestamp(Timestamp booktimestamp) {
+		this.booktimestamp = booktimestamp;
+	}
+
 	public String getGenre() {
 		return genre;
 	}
@@ -44,11 +56,11 @@ public class Book {
 		this.bookname = bookname;
 	}
 
-	public double getBook_price() {
+	public double getBookprice() {
 		return bookprice;
 	}
 
-	public void setBook_price(int bookprice) {
+	public void setBookprice(int bookprice) {
 		this.bookprice = bookprice;
 	}
 
@@ -62,6 +74,18 @@ public class Book {
 	public String toString() {
 		return "Book [idbook=" + idbook + ", Bookname=" + bookname + ", book_price=" + bookprice + "]";
 	}
+	
+	@Override
+		public int compareTo(Book o) {
+			// TODO Auto-generated method stub
+		if(bookprice==o.getBookprice())
+			return 0;
+		else if(bookprice<o.getBookprice()) 
+			return 1;
+		else
+			return -1;
+		
+		}
 
 	
 	

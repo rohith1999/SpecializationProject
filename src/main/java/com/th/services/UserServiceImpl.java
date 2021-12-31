@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
 		if (searchUser.isPresent()) {
 			User userFromDb = searchUser.get();
 			if (passwordEncoder.matches(user.getPassword(), userFromDb.getPassword())) {
-
-				return "home";
+				
+				return "user";
 				
 			} else {
 				return "index";
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 		Optional<User> searchUser = usersRepository.findById(user.getUseremail());
 		if (searchUser.isPresent()) {
 			User userFound = searchUser.get();
-			return "login";
+			return "index";
 
 		} else {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));

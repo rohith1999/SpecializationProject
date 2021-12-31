@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.th.constants.PropertyConstant;
 import com.th.model.Book;
 import com.th.repository.BookRepository;
 
@@ -25,9 +26,8 @@ import lombok.extern.slf4j.Slf4j;
  * @author Rohith S
  *
  */
-@Slf4j
 @RestController
-@RequestMapping("/books")
+@RequestMapping(PropertyConstant.BOOKS)
 public class BookController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class BookController {
 	 * @param book 
 	 * @return ResponseEntity<Book> returns the properties of the book passes in the parameter
 	 */ 
-	@PostMapping("/book")
+	@PostMapping(PropertyConstant.BOOK)
 	public ResponseEntity<Book> save (@RequestBody Book book){
 		
 		Book bookSaved = bookRepository.save(book);
@@ -51,7 +51,7 @@ public class BookController {
 	 * @return ResponseEntity<List<Book>> list of books
 	 */
 	 
-	@GetMapping("/getAllBooks")
+	@GetMapping(PropertyConstant.GET_ALL_BOOKS)
 	public  ResponseEntity<List<Book>> getAllBooks(){
 		
 		List<Book> bookList = bookRepository.findAll();
@@ -65,7 +65,7 @@ public class BookController {
 	 * @return ResponseEntity<Book> returns a single book with all its properties else returns not found
 	 *
 	 */
-	@GetMapping("/getBookById/{bookId}")
+	@GetMapping(PropertyConstant.FIND_BOOK)
 	public ResponseEntity<Book> getBookById(@PathVariable int bookId){
 		
 		Optional<Book> bookOptional = bookRepository.findById(bookId);
@@ -85,7 +85,7 @@ public class BookController {
 	 * @param bookId id the unique identity of a book 
 	 * @return ResponseEntity<Book> no content else returns not found 
 	 */
-	@DeleteMapping("/deletebook/{bookId}")
+	@DeleteMapping(PropertyConstant.DELETE_BOOK)
 	public ResponseEntity<Book> deleteBookById(@PathVariable int bookId){
 		if(bookRepository.existsById(bookId)) {
 			bookRepository.deleteById(bookId);
@@ -93,4 +93,6 @@ public class BookController {
 		}
 			return new ResponseEntity<Book>(HttpStatus.NOT_FOUND);
 	}
+	
+	
 }

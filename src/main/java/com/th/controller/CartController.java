@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.th.constants.PropertyConstant;
 import com.th.model.Book;
 import com.th.model.Userscart;
 import com.th.repository.BookRepository;
@@ -25,7 +26,7 @@ import com.th.repository.UsersCartRepository;
  *
  */
 @Controller
-@RequestMapping("/cart")
+@RequestMapping(PropertyConstant.CART)
 public class CartController {
 	
 	
@@ -38,7 +39,7 @@ public class CartController {
 	 * getAllBooksFromCart displays all books to the user under cart
 	 * @return ResponseEntity<List<Book>> returns a list of books
 	 */
-	@GetMapping("/getAllBooks")
+	@GetMapping(PropertyConstant.GET_ALL_BOOKS)
 	public  ResponseEntity<List<Book>> getAllBooksFromCart(){
 		
 		List<Book> blist = bookRepository.findAll();
@@ -50,7 +51,7 @@ public class CartController {
 	 * @param userscart adds a book to the Userscart table
 	 * @return ResponseEntity<Userscart> shows the details of the book that was added to the cart
 	 */
-	@PostMapping("/book")
+	@PostMapping(PropertyConstant.BOOK)
 	public ResponseEntity<Userscart> addBookToCart(@RequestBody Userscart userscart){
 		Userscart  userscartSaved= usersCartRepository.save(userscart);
 		return new ResponseEntity<Userscart>(userscartSaved,HttpStatus.OK);
@@ -61,7 +62,7 @@ public class CartController {
 	 * @param bookId unique ID of the book
 	 * @return ResponseEntity<Book> no content else returns not found 
 	 */
-	@DeleteMapping("/deletebook/{bookId}")
+	@DeleteMapping(PropertyConstant.DELETE_BOOK)
 	public ResponseEntity<Userscart> deleteBookById(@PathVariable int bookId){
 		
 		if(usersCartRepository.existsById(bookId)) {
