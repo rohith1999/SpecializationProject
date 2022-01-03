@@ -1,6 +1,6 @@
 package com.th.services;
 
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,12 +15,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.th.model.Admin;
 import com.th.model.Book;
+import com.th.model.BookForm;
 import com.th.repository.AdminRepository;
-import com.th.repository.BookPaginationRepository;
 import com.th.repository.BookRepository;
 
 /**
@@ -39,9 +40,6 @@ public class AdminServiceImpl implements AdminService {
 	AdminRepository adminRepository;
 	@Autowired
 	BookRepository bookRepository;
-	
-	@Autowired
-	BookPaginationRepository bookPaginationRepository;
 
 	@Override
 	public ModelAndView findByAdminId(Admin admin) {
@@ -56,15 +54,14 @@ public class AdminServiceImpl implements AdminService {
 			if (admin.getAdminpassword().equals(adminUser.getAdminpassword())) {
 
 				modelAndView.addObject("admin", adminUser);
-				
-//				Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-				
 
-				
+//				Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
+
 				List<Book> bookList = bookRepository.findAll();
 
 				Collections.sort(bookList);
 				modelAndView.addObject("books", bookList);
+				modelAndView.addObject("bookForm",new BookForm());
 
 				List<Book> bookTimeStamp = bookRepository.findAll();
 				Collections.sort(bookTimeStamp, new Comparator<Book>() {
@@ -104,18 +101,43 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public ModelAndView updateBook(Book book) {
-		
+
 		ModelAndView modelAndView = new ModelAndView();
 		Optional<Book> searchBook = bookRepository.findById(book.getidbook());
 
 		if (searchBook.isPresent()) {
-			Book bookFoundBook = bookRepository.save(book);
+			Book foundBook = searchBook.get();
+
+			if (!book.getBookname().isEmpty())
+				foundBook.setBookname(book.getBookname());
+
+			if (!book.getGenre().isEmpty())
+				foundBook.setGenre(book.getGenre());
+
+			if (book.getBookprice() > 0)
+				foundBook.setBookprice(book.getBookprice());
+
+			foundBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
+
+			Book updatedBook = bookRepository.save(foundBook);
 			modelAndView.setViewName("success");
 			return modelAndView;
 		} else {
 			modelAndView.setViewName("invalid");
 			return modelAndView;
 		}
+
+	}
+
+	@Override
+	public ModelAndView addBook(@ModelAttribute Book book) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("success");
+		bookRepository.save(book);
+
+		return modelAndView;
 
 	}
 

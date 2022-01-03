@@ -1,7 +1,11 @@
 package com.th.services;
 
 import com.th.model.User;
-
+/**
+ * 
+ * @author Rohith S
+ *
+ */
 public interface UserService {
 	
 	

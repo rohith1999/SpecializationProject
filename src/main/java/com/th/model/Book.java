@@ -2,8 +2,12 @@ package com.th.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 /**
  * Book is a POJO class that has id,name, price and genre
@@ -18,8 +22,22 @@ public class Book implements Comparable<Book>,Serializable {
 	private String bookname;
 	private double bookprice;
 	private String genre;
-	private Timestamp booktimestamp;
+	private Timestamp booktimestamp=null;
 	
+	 
+	
+	
+	public Book(int idbook, String bookname, double bookprice,String genre) {
+		this.idbook = idbook;
+		this.bookname = bookname;
+		this.bookprice = bookprice;
+		this.genre = genre;
+
+		
+	}
+
+	
+
 	public Timestamp getBooktimestamp() {
 		return booktimestamp;
 	}
@@ -34,6 +52,7 @@ public class Book implements Comparable<Book>,Serializable {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+
 	}
 
 	public Book() {
@@ -46,6 +65,7 @@ public class Book implements Comparable<Book>,Serializable {
 
 	public void setidbook(int idbook) {
 		this.idbook = idbook;
+
 	}
 
 	public String getBookname() {
@@ -60,19 +80,19 @@ public class Book implements Comparable<Book>,Serializable {
 		return bookprice;
 	}
 
-	public void setBookprice(int bookprice) {
-		this.bookprice = bookprice;
-	}
+	public void setBookprice(double d) {
+		this.bookprice = d;
 
-	public Book(int idbook, String bookname, int book_price) {
-		this.idbook = idbook;
-		this.bookname = bookname;
-		this.bookprice = book_price;
+
 	}
+	
+
+
+
 
 	@Override
 	public String toString() {
-		return "Book [idbook=" + idbook + ", Bookname=" + bookname + ", book_price=" + bookprice + "]";
+		return "Book [idbook=" + idbook + ", Bookname=" + bookname + ", bookprice=" + bookprice + "]";
 	}
 	
 	@Override

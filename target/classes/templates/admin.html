@@ -120,16 +120,16 @@
 				<div class="top-sales box">
 					<div class="title">Books Sorted in price</div>
 					<ul class="top-sales-details" th:each="book: ${books}">
-						
-						
+
+
 						<li>
 							<a href="#">
 								<span class="product" th:text="${book.bookname}"> </span>
 							</a>
 							<span class="price" th:text="${book.bookprice}"></span>
 						</li>
-					
-					
+
+
 
 					</ul>
 				</div>
@@ -144,19 +144,19 @@
 					<!--ADD  A  BOOK-->
 
 					<div class="title" align="center">Add A Book
-						<form>
-							<br>
-							<label style="color:#000;">Enter the Number of Books</label>
-							<div class="input-field">
-								<i class="fas fa-suer"></i>
-								<input type="text" id="noOfBook" placeholder="Enter the no. of Books"
-									style="text-align:center;" required />
-							</div>
-							<input type="submit" class="btn" id="submit" onclick="addBooks()"
-								value="Click to Fill Details">
 
-						</form>
-						<div id="display"></div>
+						<br>
+						<label style="color:#000;">Enter the Number of Books</label>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="number" id="noOfBook" value="1" placeholder="Enter the no. of Books"
+								style="text-align:center;" required />
+						</div>
+						<input type="submit" class="btn" id="submit" onclick="addBooks()" value="Click to Fill Details">
+
+						<form action="admin/addbook" method="POST" id="display" th:object="${books}"></form>
+
+
 					</div>
 				</div>
 			</div>
@@ -168,21 +168,21 @@
 					<!--ADD  A  BOOK-->
 
 					<div class="title" align="center">Update Book</div>
-					
-					
+
+
 					<form action="/admin/update" method="POST">
 						<div class="input-field">
 							<i class="fas fa-suer"></i>
-							<input type="number" placeholder="Enter Book ID" 	name="idbook" required />
+							<input type="number" placeholder="Enter Book ID" name="idbook" required />
 						</div>
 						<div class="input-field">
 							<i class="fas fa-suer"></i>
-							<input type="text" placeholder="Enter Book Name" name="bookname"  />
+							<input type="text" placeholder="Enter Book Name" name="bookname" />
 						</div>
-						<!--<div class="input-field">
+						<div class="input-field">
 							<i class="fas fa-suer"></i>
-							<input type="text" placeholder="Enter Price" name="bookprice"  />
-						</div>-->
+							<input type="text" placeholder="Enter Price" name="bookprice" />
+						</div>
 						<div class="input-field">
 							<i class="fas fa-suer"></i>
 							<input type="text" placeholder="Enter Genre" name="genre" />
@@ -194,7 +194,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="home-content" id="removeBook">
 			<div class="sales-boxes" style="padding-left:240px;">
 				<div class="recent-sales box">
@@ -202,12 +202,12 @@
 					<!--ADD  A  BOOK-->
 
 					<div class="title" align="center">Remove Book</div>
-					<form action = "/admin/delete" method="POST">
+					<form action="/admin/delete" method="POST">
 						<div class="input-field">
 							<i class="fas fa-suer"></i>
 							<input type="text" placeholder="Enter Book ID" name="idbook" required />
 						</div>
-						
+
 						<div>
 							<input type="submit" class="btn" value="Remove Book" />
 						</div>
@@ -256,18 +256,27 @@
 			// Container where dynamic content will be placed
 			var container = document.getElementById("display");
 
+
 			// Clear previous contents of the container
 			while (container.hasChildNodes()) {
 				container.removeChild(container.lastChild);
 			}
 			if (number <= 12) {
+
+
+
+
+
 				for (var i = 0; i < number; i++) {
 					//TO CREATE THE NAME INPUT TAG
 
 					container.appendChild(document.createTextNode(" Book ID   : "));
+
+
 					var input = document.createElement("input");
-					input.type = "text";
-					input.id = "bookID" + i;
+					input.type = "number";
+					//input.setAttribute("th:name", "|{books[" + i + "].idbook}|")
+					input.name = "idbook";
 					input.required = true;
 					container.appendChild(input);
 					container.appendChild(document.createElement("br"));
@@ -276,43 +285,49 @@
 					container.appendChild(document.createTextNode("\tBook Name : "));
 					var input1 = document.createElement("input");
 					input1.type = "text";
-					input1.name = "age" + i;
+					//input1.setAttribute("th:name", "|{books[" + i + "].bookname}|")
+					input1.name = "bookname";
 					input1.min = 1;
 					input1.max = 102;
 					input1.required = true;
 					container.appendChild(input1);
 					container.appendChild(document.createElement("br"));
 
-					//TO  CREATE THE GENDER RADIO BUTTON
+
 
 					container.appendChild(document.createTextNode("\nPrice (In Rs.): "));
-					// <!--const favicon = document.querySelector("input");-->
 					var input2 = document.createElement("input");
 					input2.type = "number";
-					//  <!--input2.value = "Male" + i;-->
-					input2.name = "Price" + i;
-					//  <!--input2.id = "Gender" + i;-->
+					//input2.setAttribute("th:name", "|{books[" + i + "].bookprice}|")
+					input2.name = "bookprice";
 					input2.required = true;
 					container.appendChild(input2);
 
-					//container.appendChild(document.createTextNode(" Male "));
-					//container.appendChild("<i class="fas fa-male" aria-hidden="true"></i>");
+					container.appendChild(document.createTextNode("\tBook Genre : "));
+					var input3 = document.createElement("input");
+					input3.type = "text";
+					input3.setAttribute("th:name", "|{books[" + i + "].genre}|")
+					input3.name = "genre";
+					input3.min = 1;
+					input3.max = 102;
+					input3.required = true;
+					container.appendChild(input3);
+					container.appendChild(document.createElement("br"));
 
-
-					//For displaying the Female RADIO button
-					var input2 = document.createElement("input");
-					input2.type = "radio";
-					input2.value = "Female" + i;
-					input2.name = "Gender" + i;
-					input2.id = "Gender" + i;
-					//container.appendChild(input2);
-					//container.appendChild(document.createTextNode(" Female "));
-
+					var button = document.createElement('input');
+					button.setAttribute('type', 'submit');
+					container.appendChild(button);
 
 					// Append a line break
-					container.appendChild(document.createElement("br"))
 					container.appendChild(document.createElement("br"));
+					container.appendChild(document.createElement("br"));
+
 				}
+
+				//var button = document.createElement('input');
+				//button.setAttribute('type', 'submit');
+				//container.appendChild(button);
+
 			}
 			else {
 				alert("Maximum number of books is 12");
