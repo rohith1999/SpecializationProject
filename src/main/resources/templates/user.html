@@ -1,504 +1,984 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet "th:href="@{/css/style.css}" >
-    <link rel="icon" href="./img/book_icon.png" />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet " th:href="@{/css/style.css}">
+	<link rel="icon" href="./img/book_icon.png" />
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="/path/to/font-awesome/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DashBoard</title>
 </head>
+
 <body>
-<div class="sidebar">
-    <div class="logo-details">
-        <!--<i class='bx bxl-c-plus-plus'></i>-->
-        <img src="./img/book_icon.png" />&nbsp;&nbsp;
-        <span class="logo_name">Book Store</span>
-    </div>
-    <ul class="nav-links">
-        <li>
-            <a href="#" class="active" title="Dashboard">
-                <i class='bx bx-grid-alt' ></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="#Books" title="Books">
-                <i class='bx bx-box' ></i>
-                <span class="links_name">Books</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" title="Order list">
-                <i class='bx bx-list-ul' ></i>
-                <span class="links_name">Order list</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" title="Total Order">
+	<!--hello Prasanna-->
+	<div class="sidebar">
+		<div class="logo-details">
+			<!--<i class='bx bxl-c-plus-plus'></i>-->
+			<img src="./img/book_icon.png" />&nbsp;&nbsp;
+			<span class="logo_name">Book Store</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#" class="active" title="Dashboard">
+					<i class='bx bx-grid-alt'></i>
+					<span class="links_name">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Books" title="Books">
+					<i class='bx bx-box'></i>
+					<span class="links_name">Books</span>
+				</a>
+			</li>
+			<li>
+				<a href="./OrderBook.html" title="Order list">
+					<i class='bx bx-list-ul'></i>
+					<span class="links_name">Order list</span>
+				</a>
+			</li>
+			<!--<li>
+            <a href="./OrderBook.html" title="Total Order">
                 <i class='bx bx-book-alt' ></i>
                 <span class="links_name">Total order</span>
             </a>
-        </li>
-        <li>
-            <a href="#footer" title="Contact">
-                <i class='bx bx-message' ></i>
-                <span class="links_name">Contact</span>
-            </a>
-        </li>
-        <li>
-            <a href="#favourites" title="Favourites">
-                <i class='bx bx-heart' ></i>
-                <span class="links_name">Favourites</span>
-            </a>
-        </li>
-        <li>
-            <a href="#settings" title="Setting">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Setting</span>
-            </a>
-        </li>
-        <li class="log_out">
-            <a href="./signin.html" title="Logout">
-                <i class='bx bx-log-out'></i>
-                <span class="links_name">Log Out</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<section class="home-section">
-    <nav>
-        <div class="sidebar-button">
-            <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Dashboard</span>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <i class='bx bx-search' ></i>
-        </div>
-        <div class="profile-details">
-            <span style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>User</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fas fa-user"></i>
+        </li>-->
+			<li>
+				<a href="#footer" title="Contact">
+					<i class='bx bx-message'></i>
+					<span class="links_name">Contact</span>
+				</a>
+			</li>
+			<li>
+				<a href="#favourites" title="Favourites">
+					<i class='bx bx-heart'></i>
+					<span class="links_name">Favourites</span>
+				</a>
+			</li>
+			<li>
+				<a href="#settings" title="Setting">
+					<i class='bx bx-cog'></i>
+					<span class="links_name">Setting</span>
+				</a>
+			</li>
+			<li class="log_out">
+				<a href="./signin.html" title="Logout">
+					<i class='bx bx-log-out'></i>
+					<span class="links_name">Log Out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i>
+				<span class="dashboard">Dashboard</span>
+			</div>
+			<div class="search-box">
+				<input type="text" placeholder="Search...">
+				<i class='bx bx-search'></i>
+			</div>
+			<div class="profile-details">
+				<span
+					style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>User</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fas fa-user"></i>
 
-     </div>
-    </nav>
-    <div class="home-content">
-        <div class="sales-boxes">
-            <div class="recent-sales box">
-                <div class="title">Recent Sales</div>
-                <div class="sales-details">
-                    <ul class="details">
-                        <li class="topic">Book Name</li>
-                        <li><a href="#">Harry Potter</a></li>
-                        <li><a href="#">Half Girlfriend</a></li>
-                        <li><a href="#">Rich Dad Poor Dad</a></li>
-                        <li><a href="#">2 States</a></li>
-                        <li><a href="#">One Night Stand</a></li>
-                        <li><a href="#">3 Mistakes of My Life</a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Author</li>
-                        <li><a href="#">Chetan Bhagath</a></li>
-                        <li><a href="#">J K Rowling</a></li>
-                        <li><a href="#">Chetan Bhagat</a></li>
-                        <li><a href="#">Chetan Bhagat</a></li>
-                        <li><a href="#">Chetan Bhagat</a></li>
-                        <li><a href="#">Chetan Bhagat</a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Price</li>
-                        <li><a href="#">Rs.204.98</a></li>
-                        <li><a href="#">Rs.24.55</a></li>
-                        <li><a href="#">Rs.25.88</a></li>
-                        <li><a href="#">Rs.170.66</a></li>
-                        <li><a href="#">Rs.180.66</a></li>
-                        <li><a href="#">Rs.190.66</a></li>
-                    </ul>
-                </div>
-                <div class="button">
+			</div>
+		</nav>
+		<div class="home-content">
+			<div class="sales-boxes">
+				<div class="recent-sales box">
+					<div class="title">Recent Sales</div>
+					<div class="sales-details">
+						<ul class="details">
+							<li class="topic">Book Name</li>
+							<li><a href="#">Harry Potter</a></li>
+							<li><a href="#">Half Girlfriend</a></li>
+							<li><a href="#">Rich Dad Poor Dad</a></li>
+							<li><a href="#">2 States</a></li>
+							<li><a href="#">One Night Stand</a></li>
+							<li><a href="#">3 Mistakes of My Life</a></li>
+						</ul>
+						<ul class="details">
+							<li class="topic">Author</li>
+							<li><a href="#">Chetan Bhagath</a></li>
+							<li><a href="#">J K Rowling</a></li>
+							<li><a href="#">Chetan Bhagat</a></li>
+							<li><a href="#">Chetan Bhagat</a></li>
+							<li><a href="#">Chetan Bhagat</a></li>
+							<li><a href="#">Chetan Bhagat</a></li>
+						</ul>
+						<ul class="details">
+							<li class="topic">Price</li>
+							<li><a href="#">Rs.204.98</a></li>
+							<li><a href="#">Rs.24.55</a></li>
+							<li><a href="#">Rs.25.88</a></li>
+							<li><a href="#">Rs.170.66</a></li>
+							<li><a href="#">Rs.180.66</a></li>
+							<li><a href="#">Rs.190.66</a></li>
+						</ul>
+					</div>
+					<!--  <div class="button">
                     <a href="#">See All</a>
-                </div>
-            </div>
-            <div class="top-sales box">
-                <div class="title">Top Selling Books</div>
-                <ul class="top-sales-details">
-                    <li>
-                        <a href="#">
-                            <span class="product">One Indian Girl</span>
-                        </a>
-                        <span class="price">Rs. 1107</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">400 Days</span>
-                        </a>
-                        <span class="price">Rs. 1567</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">One night at Call Center</span>
-                        </a>
-                        <span class="price">Rs. 1234</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">3 Mistakes of my Life</span>
-                        </a>
-                        <span class="price">Rs. 2312</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">One Arranged Murder</span>
-                        </a>
-                        <span class="price">Rs. 1456</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">Believe in yourself</span>
-                        </a>
-                        <span class="price">Rs. 2345</span>
-                    <li>
-                        <a href="#">
-                            <span class="product">Malgudi Diaries</span>
-                        </a>
-                        <span class="price">Rs. 2345</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="product">Fire on the Mountain</span>
-                        </a>
-                        <span class="price">Rs. 1245</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                </div>-->
+				</div>
+				<div class="top-sales box">
+					<div class="title">Top Selling Books</div>
+					<ul class="top-sales-details">
+						<li>
+							<a href="#">
+								<span class="product">One Indian Girl</span>
+							</a>
+							<span class="price">Rs. 1107</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">400 Days</span>
+							</a>
+							<span class="price">Rs. 1567</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">One night at Call Center</span>
+							</a>
+							<span class="price">Rs. 1234</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">3 Mistakes of my Life</span>
+							</a>
+							<span class="price">Rs. 2312</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">One Arranged Murder</span>
+							</a>
+							<span class="price">Rs. 1456</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">Believe in yourself</span>
+							</a>
+							<span class="price">Rs. 2345</span>
+						<li>
+							<a href="#">
+								<span class="product">Malgudi Diaries</span>
+							</a>
+							<span class="price">Rs. 2345</span>
+						</li>
+						<li>
+							<a href="#">
+								<span class="product">Fire on the Mountain</span>
+							</a>
+							<span class="price">Rs. 1245</span>
+						</li>
+					</ul>
+				</div>
+			</div>
 
 
-                                <!--Copied Contents from the top-->
+			<!--Copied Contents from the top-->
 
 
-        <br><br>
-        <h1 style="padding-left:380px;"  id="Books">Choose By Language</h1><br>
-        <div class="overview-boxes" onclick="#English">
-                <div class="box">
-                    <a>
-                        <div class="right-side" onclick="#tamil">
-                            <div class="box-topic">Tamil</div>
-                            <!--                    <div class="number">40,876</div>-->
-                            <div class="indicator">
-                                <i class='bx bx-up-arrow-alt'></i>
-                                <span class="text">Top Sales</span>
-                            </div>
-                        </div>
-                    </a>
-                    <i class='bx bx-cart-alt cart'></i>
-                </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Hindi</div>
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-                        <span class="text">Top sales</span>
-                    </div>
-                </div>
-                <i class='bx bxs-cart-add cart two' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">English</div>
-                    <!--                    <div class="number">$12,876</div>-->
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-                        <span class="text">Moderate</span>
-                    </div>
-                </div>
-                <i class='bx bx-cart cart three' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Kannada</div>
-                    <!--                    <div class="number">11,086</div>-->
-                    <div class="indicator">
-                        <i class='bx bx-down-arrow-alt down'></i>
-                        <span class="text">Low</span>
-                    </div>
-                </div>
-                <i class='bx bxs-cart-download cart four' ></i>
-            </div>
-        </div >
-        <h1 style="padding-left:380px;">Choose By Category</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic">Comics</div>
-                        <!--                    <div class="number">40,876</div>-->
-                        <div class="indicator">
-                            <i class='bx bx-up-arrow-alt'></i>
-<!--                            <span class="text">Top Sales</span>-->
-                        </div>
-                    </div>
-                </a>
-                <i class='bx bx-cart-alt cart'></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Adventure</div>
-                    <!--                    <div class="number">38,876</div>-->
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-<!--                        <span class="text">Top sales</span>-->
-                    </div>
-                </div>
-                <i class='bx bxs-cart-add cart two' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Religious</div>
-                    <!--                    <div class="number">$12,876</div>-->
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-<!--                        <span class="text">Moderate</span>-->
-                    </div>
-                </div>
-                <i class='bx bx-cart cart three' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Kids Book</div>
-                    <!--                    <div class="number">11,086</div>-->
-                    <div class="indicator">
-                        <i class='bx bx-down-arrow-alt down'></i>
-<!--                        <span class="text">Low</span>-->
-                    </div>
-                </div>
-                <i class='bx bxs-cart-download cart four' ></i>
-            </div>
-        </div >
-                            <!--Copied Contents Ends Here-->
+			<br><br>
+			<h1 style="padding-left:380px;">Choose By Language</h1><br>
+			<div class="overview-boxes" onclick="#English">
+				<div class="box" style="cursor:pointer;">
+					<a>
+						<div class="right-side" id="Books" onclick="#tamil">
+							<div class="box-topic">Tamil</div>
+							<!--                    <div class="number">40,876</div>-->
+							<div class="indicator">
+								<i class='bx bx-up-arrow-alt'></i>
+								<span class="text">Top Sales</span>
+							</div>
+						</div>
+					</a>
+					<i class='bx bx-cart-alt cart'></i>
+				</div>
+				<div class="box" style="cursor:pointer;">
+					<div class="right-side">
+						<div class="box-topic">Hindi</div>
+						<div class="indicator">
+							<i class='bx bx-up-arrow-alt'></i>
+							<span class="text">Top sales</span>
+						</div>
+					</div>
+					<i class='bx bxs-cart-add cart two'></i>
+				</div>
+				<div class="box" style="cursor:pointer;" onclick="#tamil">
+					<div class="right-side">
+						<div class="box-topic">English</div>
+						<!--                    <div class="number">$12,876</div>-->
+						<div class="indicator">
+							<i class='bx bx-up-arrow-alt'></i>
+							<span class="text">Moderate</span>
+						</div>
+					</div>
+					<i class='bx bx-cart cart three'></i>
+				</div>
+				<div class="box" style="cursor:pointer;">
+					<div class="right-side">
+						<div class="box-topic">Kannada</div>
+						<!--                    <div class="number">11,086</div>-->
+						<div class="indicator">
+							<i class='bx bx-down-arrow-alt down'></i>
+							<span class="text">Low</span>
+						</div>
+					</div>
+					<i class='bx bxs-cart-download cart four'></i>
+				</div>
+			</div>
+			<h1 style="padding-left:380px;">Choose By Category</h1><br>
+			<div class="overview-boxes">
+				<div class="box">
+					<a>
+						<div class="right-side">
+							<div class="box-topic">Comics</div>
+							<!--                    <div class="number">40,876</div>-->
+							<div class="indicator">
+								<i class='bx bx-up-arrow-alt'></i>
+								<!--                            <span class="text">Top Sales</span>-->
+							</div>
+						</div>
+					</a>
+					<i class='bx bx-cart-alt cart'></i>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Adventure</div>
+						<!--                    <div class="number">38,876</div>-->
+						<div class="indicator">
+							<i class='bx bx-up-arrow-alt'></i>
+							<!--                        <span class="text">Top sales</span>-->
+						</div>
+					</div>
+					<i class='bx bxs-cart-add cart two'></i>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Religious</div>
+						<!--                    <div class="number">$12,876</div>-->
+						<div class="indicator">
+							<i class='bx bx-up-arrow-alt'></i>
+							<!--                        <span class="text">Moderate</span>-->
+						</div>
+					</div>
+					<i class='bx bx-cart cart three'></i>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Kids Book</div>
+						<!--                    <div class="number">11,086</div>-->
+						<div class="indicator">
+							<i class='bx bx-down-arrow-alt down'></i>
+							<!--                        <span class="text">Low</span>-->
+						</div>
+					</div>
+					<i class='bx bxs-cart-download cart four'></i>
+				</div>
+			</div>
+			<!--Copied Contents Ends Here-->
 
-        <br><br><br>
-                                                <!--TAMIL BOOKS-->
-        <h1 style="padding-left:500px;" id="tamil">Tamil</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic" align="center"><img src="./img/tamil1.jpg" width="150px" height="200px;"></div>
-                        <!--                    <div class="number">40,876</div>-->
-                        <label style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                        <div class="indicator">
-<!--                            <i class='bx bx-up-arrow-alt'></i>-->
-                            <!--                            <span class="text">Top Sales</span>-->
-                        </div>
-                    </div>
-                </a>
-<!--                <i class='bx bx-cart-alt cart'></i>-->
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil2.jpg"  width="150px" height="200px;"></div>
-                    <!--                    <div class="number">38,876</div>-->
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                    <div class="indicator">
-                        <!--<i class='bx bx-up-arrow-alt'></i>-->
-                        <!--                        <span class="text">Top sales</span>-->
-                    </div>
-                </div>
-                <!--<i class='bx bxs-cart-add cart two' ></i>-->
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil3.png"  width="150px" height="200px;"></div>
-                    <!--                    <div class="number">$12,876</div>-->
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil4.png" width="200px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-                <!--<i class='bx bxs-cart-download cart four' ></i>-->
-            </div>
-        </div >
-                                                                <!--KANNADA Books-->
-        <h1 style="padding-left:500px;" id="kannada">Kannada</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic" align="center"><img src="./img/tamil1.jpg" width="150px" height="200px;"></div>
-                        <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                    </div>
-                </a>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil2.jpg"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil3.png"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil4.png" width="230px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
+			<br><br><br>
+			<!--TAMIL BOOKS-->
+			<h1 style="text-align:center" id="tamil">Tamil</h1><br>
+			<div class="overview-boxes">
+				<!--BOOK-->
+				<div class="box" th:each="book: ${books}">
+					<a>
+						<div class="right-side">
+							<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
+								style="cursor:pointer;"><img
+									th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(book.bookimage)}"
+									width="150px" height="200px;"></div>
+							<!--                    <div class="number">40,876</div>-->
+							<label style="text-align:center">
+								<h1 th:text="${book.bookname}"></h1>
+							</label>
+							<label style="text-align:center; ">
+								<h4 th:text="${book.bookprice}"></h4>
+							</label><br>
+							<input type="number" value="0" min="0" id="demoInput1" style="text-align:center; margin: auto;
+  display: block; padding:4px; width: 30%; border-radius:10px;">
+						</div>
+						<div align="center">
+							<button
+								style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+								onclick="fav1()"><img src="./img/heart.png" id="fav1" width="20px"
+									height="20px" /></button>
+							<button
+								style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+								onclick="cart1()"><img src="./img/cart.png" id="cart1" width="20px"
+									height="20px" /></button>
+							<label id="fav-txt1"
+								style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+								Favourites</label>
+							<label id="cart-txt1"
+								style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+								cart</label>
+						</div>
+					</a>
+				</div>
 
-        </div >
 
-        <h1 style="padding-left:500px;" id="hindi">Hindi</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic" align="center"><img src="./img/tamil1.jpg" width="150px" height="200px;"></div>
-                        <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                    </div>
-                </a>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil2.jpg"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil3.png"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil4.png" width="200px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-        </div >
 
-        <h1 style="padding-left:500px;" id="english">English</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic" align="center"><img src="./img/tamil1.jpg" width="150px" height="200px;"></div>
-                        <!--                    <div class="number">40,876</div>-->
-                        <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                    </div>
-                </a>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil2.jpg"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil3.png"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil4.png" width="200px" height="200px;"></div>
-                    <!--                    <div class="number">11,086</div>-->
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
+				<!--KANNADA Books-->
 
-        </div >
-        <h1 style="padding-left:500px;" id="favourites">Favourites</h1><br>
-        <div class="overview-boxes">
-            <div class="box">
-                <a>
-                    <div class="right-side">
-                        <div class="box-topic" align="center"><img src="./img/tamil1.jpg" width="150px" height="200px;"></div>
-                        <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                    </div>
-                </a>
-            </div>
+				<h1 style="padding-left:500px;" id="kannada">Kannada</h1><br>
+				<div class="overview-boxes">
+					<!--FIRST BOOK-->
+					<div class="box" >
+						<a>
+							<div class="right-side">
+								<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
+									style="cursor:pointer;">><img src="./img/tamil1.jpg" width="150px" height="200px;">
+								</div>
+								<!--                    <div class="number">40,876</div>-->
+								<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+								<label
+									style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+										300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+								<button class="btn" style="width:50px;height:25px;" onclick="dec5()">-</button>
+								<input type="number" value="1" min="0" id="demoInput5"
+									style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+								<button class="btn" style="width:50px;height:25px;" onclick="inc5()">+</button>
+							</div>
+							<div align="center">
+								<button
+									style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+									onclick="fav5()"><img src="./img/heart.png" id="fav5" width="20px"
+										height="20px" /></button>
+								<button
+									style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+									onclick="cart5()"><img src="./img/cart.png" id="cart5" width="20px"
+										height="20px" /></button>
+								<label id="fav-txt5"
+									style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+									Favourites</label>
+								<label id="cart-txt5"
+									style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+									cart</label>
+							</div>
+						</a>
+					</div>
 
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil3.png"  width="150px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic" align="center"><img src="./img/tamil4.png" width="200px" height="200px;"></div>
-                    <label style="padding-right:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs. 300</b></label>
-                </div>
-            </div>
-        </div >
 
-                                    <!--SETTINGS FORM-->
-        <div class="sales-boxes" style="padding-left:200px;">
-            <div class="recent-sales box" style="padding-left:1px;">
-                <div class="title" align="center">SETTINGS</div>
-                <div class="sales-details" id="settings" style="padding-left:50px;">
-                    <form>
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username or Email" required/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder=" Old Password" required/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder=" New Password" required/>
-                        </div>
-                        <input type="submit" class="btn" value="Change Password" onclick="myFunction()" required/>
-                    </form>
-                </div>
+					<!--***********************-->
+					<!--HINDI Books-->
+					<h1 style="padding-left:500px;" id="hindi">Hindi</h1><br>
+					<div class="overview-boxes">
+						<!--FIRST BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
+										style="cursor:pointer;">><img src="./img/tamil1.jpg" width="150px"
+											height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec9()">-</button>
+									<input type="number" value="1" min="0" id="demoInput9"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc9()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav9()"><img src="./img/heart.png" id="fav9" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart9()"><img src="./img/cart.png" id="cart9" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt9"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt9"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
 
-            </div>
-        </div>
-    </div>
-    <br>
-</section>
-<br><br>
-<footer style="background-color:#0d3073;color:#fff;" id="footer">
-    <p style="padding-left:250px;">
-        <span style="text-align:center;padding-left:330px;font-size:15px;">We would love to hear the feedback from you.</span><br>
-        <span style="font-size:15px;">Contact :</span><br>
-        <small style="font-size:12px;"><span><i class="fas fa-mobile"></i>&nbsp;&nbsp;Mobile :</span> +91 9597161471</small>
-        <small><span style="padding-left:720px;font-size:12px;"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Location : </span>Madurai</small>
-        <br>
-        <small><span style="font-size:12px;"><i class="fas fa-envelope-square"></i>&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;:</span> <a href="mailto:someone@example.com" style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
-    </p>
-</footer>
+						<!--SECOND BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center"
+										title="Sunduvin Sanniyasam is a popular novel by Kalki" style="cursor:pointer;">
+										<img src="./img/tamil2.jpg" width="150px" height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec10()">-</button>
+									<input type="number" value="1" min="0" id="demoInput10"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc10()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav10()"><img src="./img/heart.png" id="fav10" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart10()"><img src="./img/cart.png" id="cart10" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt10"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt10"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+						<!--THIRD BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center"
+										title="Wings of Fire is a popular book by Dr. A P J Abdul Kalam"
+										style="cursor:pointer;"><img src="./img/tamil3.png" width="150px"
+											height="200px;"></div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec11()">-</button>
+									<input type="number" value="1" min="0" id="demoInput11"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc11()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav11()"><img src="./img/heart.png" id="fav11" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart11()"><img src="./img/cart.png" id="cart11" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt11"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt11"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+						<!--FOURTH BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center" title="Children's story book"
+										style="cursor:pointer;">
+										<img src="./img/tamil4.png" width="220px" height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec12()">-</button>
+									<input type="number" value="1" min="0" id="demoInput12"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc12()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav12()"><img src="./img/heart.png" id="fav12" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart12()"><img src="./img/cart.png" id="cart12" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt12"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt12"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!--******************************-->
+					<!--ENGLISH BOOK-->
+					<h1 style="padding-left:500px;" id="english">English</h1><br>
+					<div class="overview-boxes">
+						<!--FIRST BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
+										style="cursor:pointer;">><img src="./img/tamil1.jpg" width="150px"
+											height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec13()">-</button>
+									<input type="number" value="1" min="0" id="demoInput13"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc13()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav13()"><img src="./img/heart.png" id="fav13" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart13()"><img src="./img/cart.png" id="cart13" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt13"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt13"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
 
-<script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-}
+						<!--SECOND BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center"
+										title="Sunduvin Sanniyasam is a popular novel by Kalki" style="cursor:pointer;">
+										<img src="./img/tamil2.jpg" width="150px" height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec14()">-</button>
+									<input type="number" value="1" min="0" id="demoInput14"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc14()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav14()"><img src="./img/heart.png" id="fav14" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart14()"><img src="./img/cart.png" id="cart14" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt14"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt14"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+						<!--THIRD BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center"
+										title="Wings of Fire is a popular book by Dr. A P J Abdul Kalam"
+										style="cursor:pointer;"><img src="./img/tamil3.png" width="150px"
+											height="200px;"></div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec15()">-</button>
+									<input type="number" value="1" min="0" id="demoInput15"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc15()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav15()"><img src="./img/heart.png" id="fav15" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart15()"><img src="./img/cart.png" id="cart15" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt15"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt15"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+						<!--FOURTH BOOK-->
+						<div class="box">
+							<a>
+								<div class="right-side">
+									<div class="box-topic" align="center" title="Children's story book"
+										style="cursor:pointer;">
+										<img src="./img/tamil4.png" width="220px" height="200px;">
+									</div>
+									<!--                    <div class="number">40,876</div>-->
+									<label style="padding-left:32px;"><b>PONNIYIN SELVAN</b></label>
+									<label
+										style="padding-right:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Rs.
+											300</b></label><br>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" style="width:50px;height:25px;" onclick="dec16()">-</button>
+									<input type="number" value="1" min="0" id="demoInput16"
+										style="width:50px;height:25px;border-radius:10px;padding-left:19px;">
+									<button class="btn" style="width:50px;height:25px;" onclick="inc16()">+</button>
+								</div>
+								<div align="center">
+									<button
+										style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="fav16()"><img src="./img/heart.png" id="fav16" width="20px"
+											height="20px" /></button>
+									<button
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"
+										onclick="cart16()"><img src="./img/cart.png" id="cart16" width="20px"
+											height="20px" /></button>
+									<label id="fav-txt16"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										Favourites</label>
+									<label id="cart-txt16"
+										style="-webkit-text-stroke: 1px black;display:none;font-size:12px;">Added to
+										cart</label>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!--BOOK SECTION ENDS HERE-->
+					<!--SETTINGS FORM-->
+					<div class="sales-boxes" style="padding-left:200px;">
+						<div class="recent-sales box" style="padding-left:1px;">
+							<div class="title" align="center">SETTINGS</div>
+							<div class="sales-details" id="settings" style="padding-left:50px;">
+								<form>
+									<div class="input-field">
+										<i class="fas fa-user"></i>
+										<input type="text" placeholder="Username or Email" required />
+									</div>
+									<div class="input-field">
+										<i class="fas fa-lock"></i>
+										<input type="password" id="oldpwd" placeholder=" Old Password" required />
+									</div>
+									<div class="input-field">
+										<i class="fas fa-lock"></i>
+										<input type="password" id="newpwd" placeholder=" New Password" required />
+									</div>
+									<input type="submit" class="btn" value="Change Password" onclick="myFunction()"
+										required />
+								</form>
+							</div>
 
-function myFunction()
-{
-    alert("Password Changed Successfully");
-}
- </script>
+						</div>
+					</div>
+				</div>
+				<br>
+	</section>
+	<br><br>
+	<footer style="background-color:#0d3073;color:#fff;" id="footer">
+		<p style="padding-left:250px;">
+			<span style="text-align:center;padding-left:330px;font-size:15px;">We would love to hear the feedback from
+				you.</span><br>
+			<span style="font-size:15px;">Contact :</span><br>
+			<small style="font-size:12px;"><span><i class="fas fa-mobile"></i>&nbsp;&nbsp;Mobile :</span> +91
+				9597161471</small>
+			<small><span style="padding-left:720px;font-size:12px;"><i
+						class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Location : </span>Madurai</small>
+			<br>
+			<small><span style="font-size:12px;"><i
+						class="fas fa-envelope-square"></i>&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;:</span> <a
+					href="mailto:someone@example.com"
+					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
+		</p>
+	</footer>
+
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+
+		function myFunction() {
+			old_password = document.getElementById("oldpwd");
+			new_password = document.getElementById("newpwd");
+			alert(old_password);
+		}
+
+		function fav1() {
+			document.getElementById('fav1').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt1");
+			x.style.display = "block";
+		}
+		function cart1() {
+			var x = document.getElementById("cart-txt1");
+			x.style.display = "block";
+		}
+		function fav2() {
+			document.getElementById('fav2').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt2");
+			x.style.display = "block";
+		}
+		function cart2() {
+			var x = document.getElementById("cart-txt2");
+			x.style.display = "block";
+		}
+		function fav3() {
+			document.getElementById('fav3').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt3");
+			x.style.display = "block";
+		}
+		function cart3() {
+			var x = document.getElementById("cart-txt3");
+			x.style.display = "block";
+		}
+		function fav4() {
+			document.getElementById('fav4').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt4");
+			x.style.display = "block";
+		}
+		function cart4() {
+			var x = document.getElementById("cart-txt4");
+			x.style.display = "block";
+		}
+		function fav5() {
+			document.getElementById('fav5').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt5");
+			x.style.display = "block";
+		}
+		function cart5() {
+			var x = document.getElementById("cart-txt5");
+			x.style.display = "block";
+		}
+		function fav6() {
+			document.getElementById('fav6').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt6");
+			x.style.display = "block";
+		}
+		function cart6() {
+			var x = document.getElementById("cart-txt6");
+			x.style.display = "block";
+		}
+		function fav7() {
+			document.getElementById('fav7').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt7");
+			x.style.display = "block";
+		}
+		function cart7() {
+			var x = document.getElementById("cart-txt7");
+			x.style.display = "block";
+		}
+		function fav8() {
+			document.getElementById('fav8').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt8");
+			x.style.display = "block";
+		}
+		function cart8() {
+			var x = document.getElementById("cart-txt8");
+			x.style.display = "block";
+		}
+		function fav9() {
+			document.getElementById('fav9').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt9");
+			x.style.display = "block";
+		}
+		function cart9() {
+			var x = document.getElementById("cart-txt9");
+			x.style.display = "block";
+		}
+		function fav10() {
+			document.getElementById('fav10').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt10");
+			x.style.display = "block";
+		}
+		function cart10() {
+			var x = document.getElementById("cart-txt10");
+			x.style.display = "block";
+		}
+		function fav11() {
+			document.getElementById('fav11').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt11");
+			x.style.display = "block";
+		}
+		function cart11() {
+			var x = document.getElementById("cart-txt11");
+			x.style.display = "block";
+		}
+		function fav12() {
+			document.getElementById('fav12').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt12");
+			x.style.display = "block";
+		}
+		function cart12() {
+			var x = document.getElementById("cart-txt12");
+			x.style.display = "block";
+		}
+		function fav13() {
+			document.getElementById('fav13').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt13");
+			x.style.display = "block";
+		}
+		function cart13() {
+			var x = document.getElementById("cart-txt13");
+			x.style.display = "block";
+		}
+		function fav14() {
+			document.getElementById('fav14').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt14");
+			x.style.display = "block";
+		}
+		function cart14() {
+			var x = document.getElementById("cart-txt14");
+			x.style.display = "block";
+		}
+		function fav15() {
+			document.getElementById('fav15').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt15");
+			x.style.display = "block";
+		}
+		function cart15() {
+			var x = document.getElementById("cart-txt15");
+			x.style.display = "block";
+		}
+		function fav16() {
+			document.getElementById('fav16').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt16");
+			x.style.display = "block";
+		}
+		function cart16() {
+			var x = document.getElementById("cart-txt16");
+			x.style.display = "block";
+		}
+		function inc1() {
+			document.getElementById('demoInput1').stepUp();
+		}
+		function dec1() {
+			document.getElementById('demoInput1').stepDown();
+		}
+		function inc2() {
+			document.getElementById('demoInput2').stepUp();
+		}
+		function dec2() {
+			document.getElementById('demoInput2').stepDown();
+		}
+		function inc3() {
+			document.getElementById('demoInput3').stepUp();
+		}
+		function dec3() {
+			document.getElementById('demoInput3').stepDown();
+		}
+		function inc4() {
+			document.getElementById('demoInput4').stepUp();
+		}
+		function dec4() {
+			document.getElementById('demoInput4').stepDown();
+		}
+		function inc5() {
+			document.getElementById('demoInput5').stepUp();
+		}
+		function dec5() {
+			document.getElementById('demoInput5').stepDown();
+		}
+		function inc6() {
+			document.getElementById('demoInput6').stepUp();
+		}
+		function dec6() {
+			document.getElementById('demoInput6').stepDown();
+		}
+		function inc7() {
+			document.getElementById('demoInput7').stepUp();
+		}
+		function dec7() {
+			document.getElementById('demoInput7').stepDown();
+		}
+		function inc8() {
+			document.getElementById('demoInput8').stepUp();
+		}
+		function dec8() {
+			document.getElementById('demoInput8').stepDown();
+		}
+		function inc9() {
+			document.getElementById('demoInput9').stepUp();
+		}
+		function dec9() {
+			document.getElementById('demoInput9').stepDown();
+		}
+		function inc10() {
+			document.getElementById('demoInput10').stepUp();
+		}
+		function dec10() {
+			document.getElementById('demoInput10').stepDown();
+		}
+		function inc10() {
+			document.getElementById('demoInput10').stepUp();
+		}
+		function dec10() {
+			document.getElementById('demoInput10').stepDown();
+		}
+		function inc11() {
+			document.getElementById('demoInput11').stepUp();
+		}
+		function dec11() {
+			document.getElementById('demoInput11').stepDown();
+		}
+		function inc12() {
+			document.getElementById('demoInput12').stepUp();
+		}
+		function dec12() {
+			document.getElementById('demoInput12').stepDown();
+		}
+		function inc13() {
+			document.getElementById('demoInput13').stepUp();
+		}
+		function dec13() {
+			document.getElementById('demoInput13').stepDown();
+		}
+		function inc14() {
+			document.getElementById('demoInput14').stepUp();
+		}
+		function dec14() {
+			document.getElementById('demoInput14').stepDown();
+		}
+		function inc15() {
+			document.getElementById('demoInput15').stepUp();
+		}
+		function dec15() {
+			document.getElementById('demoInput15').stepDown();
+		}
+		function inc16() {
+			document.getElementById('demoInput16').stepUp();
+		}
+		function dec16() {
+			document.getElementById('demoInput16').stepDown();
+		}
+
+	</script>
 
 </body>
-</html>
 
+</html>

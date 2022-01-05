@@ -1,5 +1,7 @@
 package com.th.services;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.th.model.User;
 /**
  * 
@@ -14,7 +16,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	public String findByUserEmail(User user);
+	public ModelAndView findByUserEmail(User user);
 	
 	/**
 	 * registerUser (registers a user to the bookstore application)

@@ -15,7 +15,7 @@ public class PropertyConstant {
 	public static final String CART= "/cart";
 	public static final String DEFAULT= "/";
 	public static final String USER_LOGIN= "/userlogin";
-	public static final String USER_REGISTER= "users/register";
+	public static final String USER_REGISTER= "/userregister";
 		
 		
 

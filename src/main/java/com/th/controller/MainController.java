@@ -23,10 +23,6 @@ public class MainController {
 	}
 	
 	
-   
-	
-	
-	
 	/**
 	 * home returns webpage
 	 * @return String which maps to home HTML file in templates directory

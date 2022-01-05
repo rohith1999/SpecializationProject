@@ -23,10 +23,22 @@ public class Book implements Comparable<Book>,Serializable {
 	private double bookprice;
 	private String genre;
 	private Timestamp booktimestamp=null;
-	
+	private byte[] bookimage;
 	 
 	
 	
+	public byte[] getBookimage() {
+		return bookimage;
+	}
+
+
+
+	public void setBookimage(byte[] bookimage) {
+		this.bookimage = bookimage;
+	}
+
+
+
 	public Book(int idbook, String bookname, double bookprice,String genre) {
 		this.idbook = idbook;
 		this.bookname = bookname;

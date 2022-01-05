@@ -9,11 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +25,7 @@ import com.th.model.Book;
 import com.th.model.User;
 import com.th.repository.UsersRepository;
 import com.th.services.UserService;
+import com.th.util.ImageUtil;
 
 /**
  * UsersController class allows you to authenticate and register a user
@@ -30,7 +34,6 @@ import com.th.services.UserService;
  *
  */
 @Controller
-@RequestMapping("users")
 public class UsersController {
 
 	@Autowired
@@ -42,8 +45,10 @@ public class UsersController {
 	 * @param user with properties useremail and password
 	 * @return String which redirects to home page or back to login page
 	 */
-	@RequestMapping(value = PropertyConstant.AUTH_USER, method = RequestMethod.POST)
-	public String authenticationUser(User user) {
+	@RequestMapping(value = PropertyConstant.USER_LOGIN, method = RequestMethod.POST)
+	public ModelAndView authenticationUser(User user, Model model) {
+
+		model.addAttribute("imgUtil", new ImageUtil());
 
 		return userService.findByUserEmail(user);
 
@@ -56,8 +61,8 @@ public class UsersController {
 	 * @return String returns to home page if new user is created else goes to login
 	 *         page
 	 */
-	@RequestMapping(value = PropertyConstant.REGISTER_USER, method = RequestMethod.POST)
-	public String register(User userRegister) {
+	@RequestMapping(value = PropertyConstant.USER_REGISTER, method = RequestMethod.POST)
+	public String register(@RequestParam("User") User userRegister) {
 
 		return userService.registerUser(userRegister);
 
