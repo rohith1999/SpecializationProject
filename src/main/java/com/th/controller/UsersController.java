@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.th.constants.PropertyConstant;
 import com.th.model.Book;
+import com.th.model.PasswordUpdate;
 import com.th.model.User;
 import com.th.repository.UsersRepository;
 import com.th.services.UserService;
@@ -48,9 +49,9 @@ public class UsersController {
 	@RequestMapping(value = PropertyConstant.USER_LOGIN, method = RequestMethod.POST)
 	public ModelAndView authenticationUser(User user, Model model) {
 
-		model.addAttribute("imgUtil", new ImageUtil());
+		
 
-		return userService.findByUserEmail(user);
+		return userService.findByUserEmail(user,model);
 
 	}
 
@@ -65,6 +66,14 @@ public class UsersController {
 	public String register(@RequestParam("User") User userRegister) {
 
 		return userService.registerUser(userRegister);
+
+	}
+	
+	
+	@RequestMapping(value = PropertyConstant.USER_PASS_CHANGE, method = RequestMethod.POST)
+	public String passwordChange(PasswordUpdate passwordUpdate) {
+
+		return userService.passwordChange(passwordUpdate);
 
 	}
 

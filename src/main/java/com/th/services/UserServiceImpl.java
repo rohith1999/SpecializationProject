@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.th.model.PasswordUpdate;
 import com.th.model.User;
 import com.th.repository.BookRepository;
 import com.th.repository.UsersRepository;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	BookRepository bookRepository;
 
 	@Override
-	public ModelAndView findByUserEmail(User user) {
+	public ModelAndView findByUserEmail(User user,Model model) {
 
 		Optional<User> searchUser = usersRepository.findById(user.getUseremail());
 
@@ -50,6 +51,10 @@ public class UserServiceImpl implements UserService {
 
 				modelAndView.setViewName("user");
 				modelAndView.addObject("books", bookRepository.findAll());
+				
+				model.addAttribute("imgUtil", new ImageUtil());
+				model.addAttribute("user",userFromDb);
+				
 				return modelAndView;
 
 			} else {
@@ -75,6 +80,26 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			User saveUser = usersRepository.save(user);
 			return "user";
+		}
+	}
+
+	@Override
+	public String passwordChange(PasswordUpdate passwordUpdate) {
+		
+		Optional<User> searchUser = usersRepository.findById(passwordUpdate.getUseremail());
+		
+		if (searchUser.isPresent()) {
+			User userFound = searchUser.get();
+			if(passwordEncoder.matches(passwordUpdate.getOldPassword(),userFound.getPassword())) {
+				userFound.setPassword(passwordEncoder.encode(passwordUpdate.getNewPassword()));
+				return "success";
+			}else {
+				return "index";
+			}
+			
+
+		}else {
+			return "index";
 		}
 	}
 

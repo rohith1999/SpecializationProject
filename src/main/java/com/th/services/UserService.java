@@ -1,7 +1,9 @@
 package com.th.services;
 
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.th.model.PasswordUpdate;
 import com.th.model.User;
 /**
  * 
@@ -16,7 +18,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	public ModelAndView findByUserEmail(User user);
+	public ModelAndView findByUserEmail(User user,Model model);
 	
 	/**
 	 * registerUser (registers a user to the bookstore application)
@@ -25,6 +27,13 @@ public interface UserService {
 	 */
     public String registerUser(User user);
     
+    
+   /**
+    * 
+    * @param passwordUpdate
+    * @return
+    */
+    public String passwordChange(PasswordUpdate passwordUpdate);
     
     
 }
