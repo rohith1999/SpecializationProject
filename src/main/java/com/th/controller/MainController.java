@@ -18,7 +18,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = PropertyConstant.USER_LOGIN)
-	public String userlogin() {
+	public String userlogin() {	
 		return "userlogin";
 	}
 	

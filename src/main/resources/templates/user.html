@@ -62,7 +62,7 @@
 				</a>
 			</li>
 			<li class="log_out">
-				<a href="./signin.html" title="Logout">
+				<a th:href="@{'/'}" title="Logout">
 					<i class='bx bx-log-out'></i>
 					<span class="links_name">Log Out</span>
 				</a>
@@ -79,41 +79,36 @@
 				<input type="text" placeholder="Search...">
 				<i class='bx bx-search'></i>
 			</div>
-			<div class="profile-details" style="font-size:20px; font-weight: bold; text-align: center;" th:text="${user.name}">
-				
+			<div class="profile-details" style="font-size:20px; font-weight: bold; text-align: center;"
+				th:text="'Hello, '+${user.name}">
+
 			</div>
 		</nav>
 		<div class="home-content">
 			<div class="sales-boxes">
 				<div class="recent-sales box">
-					<div class="title">Recent Sales</div>
+					<div class="title">Recent added Books</div>
 					<div class="sales-details">
 						<ul class="details">
 							<li class="topic">Book Name</li>
-							<li><a href="#">Harry Potter</a></li>
-							<li><a href="#">Half Girlfriend</a></li>
-							<li><a href="#">Rich Dad Poor Dad</a></li>
-							<li><a href="#">2 States</a></li>
-							<li><a href="#">One Night Stand</a></li>
-							<li><a href="#">3 Mistakes of My Life</a></li>
+
+							<li th:each="book: ${bookTimeStamp}">
+								<td th:text="${book.bookname}" />
+							</li>
+
 						</ul>
 						<ul class="details">
-							<li class="topic">Author</li>
-							<li><a href="#">Chetan Bhagath</a></li>
-							<li><a href="#">J K Rowling</a></li>
-							<li><a href="#">Chetan Bhagat</a></li>
-							<li><a href="#">Chetan Bhagat</a></li>
-							<li><a href="#">Chetan Bhagat</a></li>
-							<li><a href="#">Chetan Bhagat</a></li>
+							<li class="topic">Genre</li>
+							<li th:each="book: ${books}">
+								<td th:text="${book.genre}" />
+							</li>
+
 						</ul>
 						<ul class="details">
 							<li class="topic">Price</li>
-							<li><a href="#">Rs.204.98</a></li>
-							<li><a href="#">Rs.24.55</a></li>
-							<li><a href="#">Rs.25.88</a></li>
-							<li><a href="#">Rs.170.66</a></li>
-							<li><a href="#">Rs.180.66</a></li>
-							<li><a href="#">Rs.190.66</a></li>
+							<li th:each="book: ${books}">
+								<td th:text="${book.bookprice}" />
+							</li>
 						</ul>
 					</div>
 					<!--  <div class="button">
@@ -121,55 +116,15 @@
                 </div>-->
 				</div>
 				<div class="top-sales box">
-					<div class="title">Top Selling Books</div>
-					<ul class="top-sales-details">
+					<div class="title">Books sorted by price</div>
+					<ul class="top-sales-details" th:each="book: ${books}">
 						<li>
 							<a href="#">
-								<span class="product">One Indian Girl</span>
+								<span class="product" th:text="${book.bookname}"> </span>
 							</a>
-							<span class="price">Rs. 1107</span>
+							<span class="price" th:text="${book.bookprice}"></span>
 						</li>
-						<li>
-							<a href="#">
-								<span class="product">400 Days</span>
-							</a>
-							<span class="price">Rs. 1567</span>
-						</li>
-						<li>
-							<a href="#">
-								<span class="product">One night at Call Center</span>
-							</a>
-							<span class="price">Rs. 1234</span>
-						</li>
-						<li>
-							<a href="#">
-								<span class="product">3 Mistakes of my Life</span>
-							</a>
-							<span class="price">Rs. 2312</span>
-						</li>
-						<li>
-							<a href="#">
-								<span class="product">One Arranged Murder</span>
-							</a>
-							<span class="price">Rs. 1456</span>
-						</li>
-						<li>
-							<a href="#">
-								<span class="product">Believe in yourself</span>
-							</a>
-							<span class="price">Rs. 2345</span>
-						<li>
-							<a href="#">
-								<span class="product">Malgudi Diaries</span>
-							</a>
-							<span class="price">Rs. 2345</span>
-						</li>
-						<li>
-							<a href="#">
-								<span class="product">Fire on the Mountain</span>
-							</a>
-							<span class="price">Rs. 1245</span>
-						</li>
+
 					</ul>
 				</div>
 			</div>
@@ -183,8 +138,8 @@
 			<div class="overview-boxes" onclick="#English">
 				<div class="box" style="cursor:pointer;">
 					<a>
-						<div class="right-side" id="Books" onclick="#tamil">
-							<div class="box-topic">Tamil</div>
+						<div class="right-side" id="Books" onclick="#books">
+							<div class="box-topic">Books</div>
 							<!--                    <div class="number">40,876</div>-->
 							<div class="indicator">
 								<i class='bx bx-up-arrow-alt'></i>
@@ -280,11 +235,12 @@
 
 			<br><br><br>
 			<!--TAMIL BOOKS-->
-			<h1 style="text-align:center" id="tamil">Tamil</h1><br>
+			<h1 style="text-align:center" id="books">Books</h1><br>
 			<div class="overview-boxes">
 				<!--BOOK-->
-				<div class="box" th:each="book: ${books}">
+				<div class="box" style="margin: 5px;" th:each="book: ${books}">
 					<a>
+						
 						<div class="right-side">
 							<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
 								style="cursor:pointer;"><img
@@ -299,7 +255,9 @@
 							</label><br>
 							<input type="number" value="0" min="0" id="demoInput1" style="text-align:center; margin: auto;
   display: block; padding:4px; width: 30%; border-radius:10px;">
+  						
 						</div>
+						<br>
 						<div align="center">
 							<button
 								style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;"
@@ -327,11 +285,12 @@
   align-items: center;">
 				<div class="recent-sales box">
 					<h1 class="title" style="text-align: center;">SETTINGS</h1>
-					<div class="sales-details" id="settings" style="padding-left:50px;">
+					<div class="sales-details" id="settings" >
 						<form method="POST" action="/passwordchange">
 							<div class="input-field">
 								<i class="fas fa-user"></i>
-								<input type="text" placeholder="User Email" name="useremail"  th:value="${user.useremail}" readonly/>
+								<input type="text" placeholder="User Email" name="useremail"
+									th:value="${user.useremail}" readonly />
 							</div>
 							<div class="input-field">
 								<i class="fas fa-lock"></i>

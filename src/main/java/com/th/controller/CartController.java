@@ -18,7 +18,7 @@ import com.th.constants.PropertyConstant;
 import com.th.model.Book;
 import com.th.model.Userscart;
 import com.th.repository.BookRepository;
-import com.th.repository.UsersCartRepository;
+import com.th.repository.UserCartRepository;
 
 /**
  * This class allows you to add, delete, get and find a book by id in a user's cart
@@ -31,7 +31,7 @@ public class CartController {
 	
 	
 	@Autowired
-	UsersCartRepository usersCartRepository;
+	UserCartRepository userCartRepository;
 	@Autowired
 	BookRepository bookRepository;
 	
@@ -53,7 +53,7 @@ public class CartController {
 	 */
 	@PostMapping(PropertyConstant.BOOK)
 	public ResponseEntity<Userscart> addBookToCart(@RequestBody Userscart userscart){
-		Userscart  userscartSaved= usersCartRepository.save(userscart);
+		Userscart  userscartSaved= userCartRepository.save(userscart);
 		return new ResponseEntity<Userscart>(userscartSaved,HttpStatus.OK);
 	}
 	
@@ -65,8 +65,8 @@ public class CartController {
 	@DeleteMapping(PropertyConstant.DELETE_BOOK)
 	public ResponseEntity<Userscart> deleteBookById(@PathVariable int bookId){
 		
-		if(usersCartRepository.existsById(bookId)) {
-			usersCartRepository.deleteById(bookId);
+		if(userCartRepository.existsById(bookId)) {
+			userCartRepository.deleteById(bookId);
 			return new ResponseEntity<Userscart>(HttpStatus.NO_CONTENT);
 		}
 			return new ResponseEntity<Userscart>(HttpStatus.NOT_FOUND);

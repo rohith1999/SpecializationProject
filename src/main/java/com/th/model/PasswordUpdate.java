@@ -1,10 +1,15 @@
 package com.th.model;
-
+/**
+ * {@link PasswordUpdate} POJO for updating password
+ * @author Rohith S
+ *
+ */
 public class PasswordUpdate {
 	
 	private String useremail;
 	private String oldPassword;
 	private String newPassword;
+	
 	public String getUseremail() {
 		return useremail;
 	}

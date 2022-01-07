@@ -25,7 +25,7 @@ public interface UserService {
 	 * @param user
 	 * @return String (returns to home page if successful else goes to login page)
 	 */
-    public String registerUser(User user);
+    public ModelAndView registerUser(User user,Model model);
     
     
    /**

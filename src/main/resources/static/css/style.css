@@ -44,10 +44,10 @@ input {
 
 form {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0rem 5rem;
   transition: all 0.2s 0.2s;
   overflow: hidden;
   grid-column: 1 / 2;
@@ -555,6 +555,10 @@ nav .search-box .bx-search{
   font-size: 22px;
   transition: all 0.4 ease;
 }
+
+.details{
+	margin: 5px;
+}
 .home-section nav .profile-details{
   display: flex;
   align-items: center;
@@ -594,6 +598,9 @@ nav .profile-details i{
   padding: 0 20px;
   margin-bottom: 26px;
 }
+
+
+
 .overview-boxes .box{
   display: flex;
   align-items: center;
@@ -673,17 +680,18 @@ nav .profile-details i{
 
 /* left box */
 .home-content .sales-boxes .recent-sales{
-  width: 65%;
+  width: 50%;
   background: #fff;
   padding: 20px 30px;
   margin: 0 50px;
+  display: block;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .home-content .sales-boxes .sales-details{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 .sales-boxes .box .title{
   font-size: 24px;

@@ -2,12 +2,8 @@ package com.th.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 /**
  * Book is a POJO class that has id,name, price and genre
@@ -15,7 +11,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Book implements Comparable<Book>,Serializable {
+public class Book implements Comparable<Book> {
 	
 	@Id
 	private int idbook;
@@ -28,6 +24,7 @@ public class Book implements Comparable<Book>,Serializable {
 	
 	
 	public byte[] getBookimage() {
+		
 		return bookimage;
 	}
 

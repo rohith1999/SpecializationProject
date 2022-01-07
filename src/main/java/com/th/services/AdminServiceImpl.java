@@ -1,5 +1,6 @@
 package com.th.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.th.model.Admin;
@@ -62,7 +65,7 @@ public class AdminServiceImpl implements AdminService {
 
 				Collections.sort(bookList);
 				modelAndView.addObject("books", bookList);
-				modelAndView.addObject("bookForm",new BookForm());
+				modelAndView.addObject("bookForm", new BookForm());
 
 				List<Book> bookTimeStamp = bookRepository.findAll();
 				Collections.sort(bookTimeStamp, new Comparator<Book>() {
@@ -101,7 +104,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public ModelAndView updateBook(Book book) {
+	public ModelAndView updateBook(Book book, @RequestParam("bookimg") MultipartFile file) throws IOException {
 
 		ModelAndView modelAndView = new ModelAndView();
 		Optional<Book> searchBook = bookRepository.findById(book.getidbook());
@@ -119,6 +122,12 @@ public class AdminServiceImpl implements AdminService {
 				foundBook.setBookprice(book.getBookprice());
 
 			foundBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
+			if (file.getBytes() != null) {
+				System.out.println("entered");
+
+				foundBook.setBookimage(file.getBytes());
+
+			}
 
 			Book updatedBook = bookRepository.save(foundBook);
 			modelAndView.setViewName("success");
@@ -131,15 +140,35 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public ModelAndView addBook(@ModelAttribute Book book) {
+	public ModelAndView addBook(Book book,@RequestParam("bookimg") MultipartFile file)throws IOException {
 
 		ModelAndView modelAndView = new ModelAndView();
-		
-		modelAndView.setViewName("success");
-		bookRepository.save(book);
+		Optional<Book> searchBook = bookRepository.findById(book.getidbook());
 
-		return modelAndView;
+		if (!(searchBook.isPresent())) {
 
+			Book newBook = new Book();
+			
+			newBook.setidbook(book.getidbook());
+			newBook.setBookname(book.getBookname());
+
+			newBook.setGenre(book.getGenre());
+
+			newBook.setBookprice(book.getBookprice());
+
+			newBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
+
+			System.out.println("entered");
+
+			newBook.setBookimage(file.getBytes());
+
+			Book newBookSave = bookRepository.save(newBook);
+			modelAndView.setViewName("success");
+			return modelAndView;
+		} else {
+			modelAndView.setViewName("invalid");
+			return modelAndView;
+		}
 	}
 
 }

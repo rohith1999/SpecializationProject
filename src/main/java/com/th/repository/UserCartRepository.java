@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.th.model.Userscart;
 
 @Repository
-public interface UsersCartRepository extends JpaRepository<Userscart,Integer> {
+public interface UserCartRepository extends JpaRepository<Userscart,Integer> {
 	
 	
 

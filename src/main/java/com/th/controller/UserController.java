@@ -24,18 +24,18 @@ import com.th.constants.PropertyConstant;
 import com.th.model.Book;
 import com.th.model.PasswordUpdate;
 import com.th.model.User;
-import com.th.repository.UsersRepository;
+import com.th.repository.UserRepository;
 import com.th.services.UserService;
 import com.th.util.ImageUtil;
 
 /**
- * UsersController class allows you to authenticate and register a user
+ * UserController class allows you to authenticate and register a user
  * 
  * @author Rohith S
  *
  */
 @Controller
-public class UsersController {
+public class UserController {
 
 	@Autowired
 	UserService userService;
@@ -63,9 +63,9 @@ public class UsersController {
 	 *         page
 	 */
 	@RequestMapping(value = PropertyConstant.USER_REGISTER, method = RequestMethod.POST)
-	public String register(@RequestParam("User") User userRegister) {
+	public ModelAndView register(User userRegister,Model model) {
 
-		return userService.registerUser(userRegister);
+		return userService.registerUser(userRegister,model);
 
 	}
 	
