@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.th.constants.PropertyConstant;
 import com.th.model.Book;
-import com.th.model.Userscart;
+import com.th.model.UserCart;
 import com.th.repository.BookRepository;
 import com.th.repository.UserCartRepository;
+import com.th.services.CartService;
 
 /**
  * This class allows you to add, delete, get and find a book by id in a user's cart
@@ -31,30 +32,29 @@ public class CartController {
 	
 	
 	@Autowired
-	UserCartRepository userCartRepository;
-	@Autowired
-	BookRepository bookRepository;
+	CartService cartService;
+
 	
 	/**
 	 * getAllBooksFromCart displays all books to the user under cart
 	 * @return ResponseEntity<List<Book>> returns a list of books
 	 */
-	@GetMapping(PropertyConstant.GET_ALL_BOOKS)
-	public  ResponseEntity<List<Book>> getAllBooksFromCart(){
-		
-		List<Book> blist = bookRepository.findAll();
-		return new ResponseEntity<List<Book>>(blist,HttpStatus.OK);
-	}
+//	@GetMapping(PropertyConstant.GET_ALL_BOOKS)
+//	public  ResponseEntity<List<Book>> getAllBooksFromCart(){
+//		
+//		List<Book> blist = bookRepository.findAll();
+//		return new ResponseEntity<List<Book>>(blist,HttpStatus.OK);
+//	}
 	
 	/**
 	 * addBookToCart adds a book to the respective user's cart
-	 * @param userscart adds a book to the Userscart table
-	 * @return ResponseEntity<Userscart> shows the details of the book that was added to the cart
+	 * @param userCart adds a book to the UserCart table
+	 * @return  shows the details of the book that was added to the cart
 	 */
 	@PostMapping(PropertyConstant.BOOK)
-	public ResponseEntity<Userscart> addBookToCart(@RequestBody Userscart userscart){
-		Userscart  userscartSaved= userCartRepository.save(userscart);
-		return new ResponseEntity<Userscart>(userscartSaved,HttpStatus.OK);
+	public String addBookToCart(UserCart userCart){
+		
+		return cartService.addBookToCart(userCart);
 	}
 	
 	/** 
@@ -62,16 +62,16 @@ public class CartController {
 	 * @param bookId unique ID of the book
 	 * @return ResponseEntity<Book> no content else returns not found 
 	 */
-	@DeleteMapping(PropertyConstant.DELETE_BOOK)
-	public ResponseEntity<Userscart> deleteBookById(@PathVariable int bookId){
-		
-		if(userCartRepository.existsById(bookId)) {
-			userCartRepository.deleteById(bookId);
-			return new ResponseEntity<Userscart>(HttpStatus.NO_CONTENT);
-		}
-			return new ResponseEntity<Userscart>(HttpStatus.NOT_FOUND);
-			
-	}
+//	@DeleteMapping(PropertyConstant.DELETE_BOOK)
+//	public ResponseEntity<UserCart> deleteBookById(@PathVariable int bookId){
+//		
+//		if(userCartRepository.existsById(bookId)) {
+//			userCartRepository.deleteById(bookId);
+//			return new ResponseEntity<UserCart>(HttpStatus.NO_CONTENT);
+//		}
+//			return new ResponseEntity<UserCart>(HttpStatus.NOT_FOUND);
+//			
+//	}
 	
 	
 	

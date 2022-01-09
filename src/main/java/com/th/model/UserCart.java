@@ -11,17 +11,17 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Userscart is a POJO class that has bookid, userid, and qunatity
+ * UserCart is a POJO class that has bookid, useremail, and qunatity
  * @author Rohith S
  *
  */
 @Table(name = "userscart")
 @Entity
-public class Userscart {
+public class UserCart {
 
 @Id
 private int bookid;
-private int userid; 
+private String useremail; 
 private int quantity;
 
 public int getBookid() {
@@ -30,11 +30,11 @@ public int getBookid() {
 public void setBookid(int bookid) {
 	this.bookid = bookid;
 }
-public int getUserid() {
-	return userid;
+public String getUserid() {
+	return useremail;
 }
-public void setUserid(int userid) {
-	this.userid = userid;
+public void setUserid(String useremail) {
+	this.useremail = useremail;
 }
 public int getQuantity() {
 	return quantity;
@@ -45,18 +45,18 @@ public void setQuantity(int quantity) {
 
 
 
-public Userscart() {
+public UserCart() {
 	super();
 }
-public Userscart(int bookid, int userid, int quantity) {
+public UserCart(int bookid, String useremail, int quantity) {
 	super();
 	this.bookid = bookid;
-	this.userid = userid;
+	this.useremail = useremail;
 	this.quantity = quantity;
 }
 @Override
 public String toString() {
-	return "Userscart [bookid=" + bookid + ", userid=" + userid + ", quantity=" + quantity + "]";
+	return "UserCart [bookid=" + bookid + ", useremail=" + useremail + ", quantity=" + quantity + "]";
 }
 
 
