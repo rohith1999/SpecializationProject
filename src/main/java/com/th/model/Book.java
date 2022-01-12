@@ -15,6 +15,15 @@ public class Book implements Comparable<Book> {
 	
 	@Id
 	private int idbook;
+
+
+	private String bookname;
+	private double bookprice;
+	private String genre;
+	private Timestamp booktimestamp=null;
+	private byte[] bookimage;
+	 
+	
 	public int getIdbook() {
 		return idbook;
 	}
@@ -24,13 +33,6 @@ public class Book implements Comparable<Book> {
 	public void setIdbook(int idbook) {
 		this.idbook = idbook;
 	}
-
-	private String bookname;
-	private double bookprice;
-	private String genre;
-	private Timestamp booktimestamp=null;
-	private byte[] bookimage;
-	 
 	
 	
 	public byte[] getBookimage() {

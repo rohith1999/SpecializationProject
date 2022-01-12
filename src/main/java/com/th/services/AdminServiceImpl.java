@@ -158,7 +158,6 @@ public class AdminServiceImpl implements AdminService {
 
 			newBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
 
-			System.out.println("entered");
 
 			newBook.setBookimage(file.getBytes());
 

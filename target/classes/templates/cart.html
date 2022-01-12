@@ -68,7 +68,7 @@
 			<h1 style="padding-left:450px;">Your Books</h1><br>
 			<div class="overview-boxes">
 				<div class="box" style="margin: 5px;" th:each="cart: ${cartList}">
-					<a >
+					<a>
 
 						<div class="right-side">
 							<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
@@ -79,8 +79,17 @@
 							<label style="text-align:center">
 
 								<h1 th:text="${cart.book.bookname}"></h1>
-								<h1 th:text="${cart.quantity}"></h1>
+								<h1 th:text="'quantity:'+${cart.quantity}"></h1>
+								
+								<form action="/deletebookcart" method="POST">
+								
+								<input type="hidden" name="bookid" th:value="${book.idbook}" />
+								<input type="hidden" name="useremail" th:value="${user.useremail}" />
 
+
+								<button type="submit" style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"><i class="fas fa-trash"></i></button>
+
+								</forma>
 							</label>
 							<label style="text-align:center; ">
 								<h4 th:text="'Rs. '+${cart.book.bookprice}"></h4>
