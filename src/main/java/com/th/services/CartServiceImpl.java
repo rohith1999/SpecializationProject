@@ -44,7 +44,7 @@ public class CartServiceImpl implements CartService {
 		
 		userCartRepository.save(cartExists);
 
-		return "redirect:userlogin";
+		return "success";
 	}
 
 	@Override
