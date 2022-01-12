@@ -8,7 +8,8 @@ import com.th.model.User;
 /**
  * 
  * @author Rohith S
- *
+ * User Service defines all the method headers to be
+ * implemented
  */
 public interface UserService {
 	
@@ -27,11 +28,10 @@ public interface UserService {
 	 */
     public ModelAndView registerUser(User user,Model model);
     
-    
-   /**
-    * 
+   /** 
+    * updates a password for an existing logged in user
     * @param passwordUpdate
-    * @return
+    * @return (returns to home page if successful else goes to login page)
     */
     public String passwordChange(PasswordUpdate passwordUpdate);
     

@@ -1,27 +1,32 @@
 package com.th.services;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.th.model.UserCart;
 
 /**
  * 
- * @author Rohith S
- *
+ * @author Rohith S 
+ * Cart Service defines all the method headers to be
+ * implemented
  */
 public interface CartService {
-	
-	
-	public String addBookToCart(UserCart userCart);
-	public String getAllOrders(String useremail,Model model);
-	
-	
-		
-		
-	
 
-	
+	/**
+	 * adds a book to a user's cart
+	 * 
+	 * @param userCart consists of bookid, cartid, quantity and useremail
+	 * @return (a html page)
+	 */
+	public String addBookToCart(UserCart userCart);
+
+	/**
+	 * gets all books ordered by a user
+	 * 
+	 * @param useremail
+	 * @param model     adds objetcs to be dispalyed to a user
+	 * @return (a html page)
+	 */
+	public String getAllOrders(String useremail, Model model);
 
 }

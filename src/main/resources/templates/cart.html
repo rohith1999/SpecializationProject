@@ -83,13 +83,13 @@
 								
 								<form action="/deletebookcart" method="POST">
 								
-								<input type="hidden" name="bookid" th:value="${book.idbook}" />
+								<!--<input type="hidden" name="bookid" th:value="${book.idbook}" />
 								<input type="hidden" name="useremail" th:value="${user.useremail}" />
-
+-->
 
 								<button type="submit" style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"><i class="fas fa-trash"></i></button>
 
-								</forma>
+								</form>
 							</label>
 							<label style="text-align:center; ">
 								<h4 th:text="'Rs. '+${cart.book.bookprice}"></h4>

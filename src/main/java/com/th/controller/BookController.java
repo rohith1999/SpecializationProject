@@ -1,7 +1,6 @@
 package com.th.controller;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.th.constants.PropertyConstant;
 import com.th.model.Book;
 import com.th.repository.BookRepository;
-
-import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 /**
  * BookController class allows you to add, delete, get and find a book by id
  * @author Rohith S
@@ -29,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping(PropertyConstant.BOOKS)
 public class BookController {
+	
 	
 	@Autowired
 	BookRepository bookRepository;

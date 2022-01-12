@@ -1,8 +1,6 @@
 package com.th.services;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -11,22 +9,15 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.th.model.Admin;
 import com.th.model.Book;
-import com.th.model.BookForm;
 import com.th.repository.AdminRepository;
 import com.th.repository.BookRepository;
-import com.th.util.ImageUtil;
 
 /**
  * 
@@ -59,13 +50,11 @@ public class AdminServiceImpl implements AdminService {
 
 				modelAndView.addObject("admin", adminUser);
 
-//				Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
 
 				List<Book> bookList = bookRepository.findAll();
 
 				Collections.sort(bookList);
 				modelAndView.addObject("books", bookList);
-				modelAndView.addObject("bookForm", new BookForm());
 
 				List<Book> bookTimeStamp = bookRepository.findAll();
 				Collections.sort(bookTimeStamp, new Comparator<Book>() {
@@ -122,7 +111,7 @@ public class AdminServiceImpl implements AdminService {
 				foundBook.setBookprice(book.getBookprice());
 
 			foundBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
-			if (file.getBytes() != null) {
+			if (file.getSize() > 0) {
 				System.out.println("entered");
 
 				foundBook.setBookimage(file.getBytes());
@@ -140,7 +129,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public ModelAndView addBook(Book book,@RequestParam("bookimg") MultipartFile file)throws IOException {
+	public ModelAndView addBook(Book book, @RequestParam("bookimg") MultipartFile file) throws IOException {
 
 		ModelAndView modelAndView = new ModelAndView();
 		Optional<Book> searchBook = bookRepository.findById(book.getidbook());
@@ -148,7 +137,7 @@ public class AdminServiceImpl implements AdminService {
 		if (!(searchBook.isPresent())) {
 
 			Book newBook = new Book();
-			
+
 			newBook.setidbook(book.getidbook());
 			newBook.setBookname(book.getBookname());
 
@@ -157,7 +146,6 @@ public class AdminServiceImpl implements AdminService {
 			newBook.setBookprice(book.getBookprice());
 
 			newBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
-
 
 			newBook.setBookimage(file.getBytes());
 

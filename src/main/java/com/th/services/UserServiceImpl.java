@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.th.model.Book;
 import com.th.model.PasswordUpdate;
 import com.th.model.User;
@@ -33,6 +32,7 @@ import com.th.util.ImageUtil;
 @Transactional
 public class UserServiceImpl implements UserService {
 
+	
 	@Autowired
 	private UserRepository userRepository;
 
