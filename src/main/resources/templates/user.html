@@ -76,9 +76,12 @@
 				<i class='bx bx-menu sidebarBtn'></i>
 				<span class="dashboard">Dashboard</span>
 			</div>
-			<div class="search-box">
-				<input type="text" placeholder="Search...">
-				<i class='bx bx-search'></i>
+				<form action="/search" method="GET">
+				<div class="search-box">
+				<input type="hidden" name="useremail" th:value="${user.useremail}" />
+				<input type = "text" name="bname" th:value="${bname}" placeholder="Enter the book name">
+				<button type="submit" value="submit" class='bx bx-search'>
+				</form>
 			</div>
 			<div class="profile-details" style="font-size:20px; font-weight: bold; text-align: center;"
 				th:text="'Hello, '+${user.name}">
@@ -129,10 +132,8 @@
 					</ul>
 				</div>
 			</div>
-
-
 			<!--Copied Contents from the top-->
-
+<!----------------------------->
 
 			<br><br>
 		<!--	<h1 style="padding-left:380px;">Choose By Language</h1><br>

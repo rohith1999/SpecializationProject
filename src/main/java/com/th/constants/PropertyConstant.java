@@ -91,5 +91,15 @@ public class PropertyConstant {
 	 * USER_ADD_TO_CART adds a book to user's cart
 	 */
 	public static final String USER_ADD_TO_CART = "/cartaddbook";
+	
+	/**
+	 * USER_DELETE_CART delete a book to from cart
+	 */
+	public static final String USER_DELETE_CART = "/deletebookcart";
+	
+	/**
+	 * SEARCH search book
+	 */
+	public static final String SEARCH = "/search";
 
 }

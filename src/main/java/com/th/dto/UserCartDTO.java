@@ -17,6 +17,8 @@ public class UserCartDTO {
 	 * quantity is number of a particular book added by user
 	 */
 	private int quantity;
+	
+	private int cartid;
 
 	/**
 	 * gets a book object 
@@ -49,5 +51,15 @@ public class UserCartDTO {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public int getCartid() {
+		return cartid;
+	}
+
+	public void setCartid(int cartid) {
+		this.cartid = cartid;
+	}
+	
+	
 
 }

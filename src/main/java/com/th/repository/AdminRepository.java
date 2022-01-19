@@ -5,9 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.th.model.Admin;
 /**
+ * AdminRepository extends Jpa repository that allows to perform CRUD operations on admin table
  * 
  * @author Rohith S
- * AdminRepository extends Jpa repository that allows to perform CRUD operations on admin table
+ * 
  */
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer>{

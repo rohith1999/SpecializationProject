@@ -61,7 +61,7 @@ public class AdminController {
 	/**
 	 * Updates an existing book details which is residing in MYSQL database
 	 * 
-	 * @param book (constitls of book details that must be updated)
+	 * @param book (consists of book details that must be updated)
 	 * @param file (image of the book)
 	 * @return String which returns a success page or invalid page
 	 * @throws IOException
@@ -77,7 +77,7 @@ public class AdminController {
 	/**
 	 * Adds a new book onto the MYSQL database
 	 * 
-	 * @param book (constitls of book details that must be updated)
+	 * @param book (consists of book details that must be updated)
 	 * @param file (image of the book)
 	 * @return String which returns a success page or invalid page
 	 * @throws IOException

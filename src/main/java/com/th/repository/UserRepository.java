@@ -6,8 +6,10 @@ import com.th.model.User;
 
 /**
  * 
- * @author Rohith S
+ * 
  * UserRepository extends Jpa repository that allows to perform CRUD operations on User table
+ * 
+ * @author Rohith S 
  */
 public interface UserRepository extends JpaRepository<User,String> {
 

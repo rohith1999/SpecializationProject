@@ -25,7 +25,7 @@ import com.th.util.ImageUtil;
  * UserServiceImpl implements the business logic for registering and
  * authenticating a user
  * 
- * @author Rohith S
+ * @author Rohith S , Sairam S and Vishwas M
  *
  */
 @Service
@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	BookRepository bookRepository;
 
+	/**
+	 * findByUserEmail (finds a user using his email id) 
+	 * @param user
+	 * @return String (return index if successful or else invalid)
+	 */
 	@Override
 	public ModelAndView findByUserEmail(User user,Model model) {
 
@@ -50,7 +55,8 @@ public class UserServiceImpl implements UserService {
 		ModelAndView modelAndView = new ModelAndView();
 		if (searchUser.isPresent()) {
 			User userFromDb = searchUser.get();
-
+			Book book = new Book();
+			
 			if (passwordEncoder.matches(user.getPassword(), userFromDb.getPassword())) {
 
 				modelAndView.setViewName("user");
@@ -58,7 +64,7 @@ public class UserServiceImpl implements UserService {
 				
 				model.addAttribute("imgUtil", new ImageUtil());
 				model.addAttribute("user",userFromDb);
-				
+				modelAndView.addObject("display",book);
 				
 				List<Book> bookTimeStamp = bookRepository.findAll();
 
@@ -85,6 +91,11 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/**
+	 * registerUser (registers a user to the bookstore application)
+	 * @param user
+	 * @return String (returns to home page if successful else goes to login page)
+	 */
 	@Override
 	public ModelAndView registerUser(User user,Model model) {
 		Optional<User> searchUser = userRepository.findById(user.getUseremail());
@@ -98,12 +109,13 @@ public class UserServiceImpl implements UserService {
 		} else {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			User saveUser = userRepository.save(user);
-			
+			Book book = new Book();
 			
 			modelAndView.addObject("books", bookRepository.findAll());
 			
 			model.addAttribute("imgUtil", new ImageUtil());
 			model.addAttribute("user",user);
+			modelAndView.addObject("display",book);
 			
 			List<Book> bookTimeStamp = bookRepository.findAll();
 
@@ -121,6 +133,11 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	/** 
+	 * passwordChange (updates a password for an existing logged in user)
+	 * @param passwordUpdate
+	 * @return (returns to home page if successful else goes to login page)
+	 */
 	@Override
 	public String passwordChange(PasswordUpdate passwordUpdate) {
 		
@@ -140,5 +157,40 @@ public class UserServiceImpl implements UserService {
 			return "index";
 		}
 	}
+
+	/**
+     * bookSearch (search a book by bookname)
+     * @param bname
+     * @param useremail
+     * @param model
+     * @return String (return search page)
+     */
+	@Override
+	public String bookSearch(String bname,String useremail, Model model) {
+		
+		Book book=new Book();
+			
+		Optional<Book> searchObj = bookRepository.FindByBookName(bname);
+		Optional<User> searchUser = userRepository.findById(useremail);
+		User userFromDb = searchUser.get();
+		System.out.println(useremail);
+		
+		book = searchObj.get();
+		
+		System.out.println(book);
+		
+		model.addAttribute("display",book);
+		
+		model.addAttribute("books", bookRepository.findAll());
+		
+		model.addAttribute("imgUtil", new ImageUtil());
+		model.addAttribute("user",userFromDb);
+		model.addAttribute("display",book);
+		
+		return "search";
+	}
+	
+	
+	
 
 }

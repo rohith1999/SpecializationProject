@@ -3,11 +3,13 @@ package com.th.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.th.constants.PropertyConstant;
+import com.th.dto.UserCartDTO;
 import com.th.model.UserCart;
 import com.th.services.CartService;
 
@@ -54,5 +56,16 @@ public class CartController {
 		return cartService.getAllOrders(useremail,model);
 
 	}
-
+	
+	/**
+	 * delete a book from cart
+	 * @param userCartDTO
+	 * @return String (returns cart page or Invalid page)
+	 */
+	@PostMapping(PropertyConstant.USER_DELETE_CART)
+	public String deleteBookCart(UserCartDTO userCartDTO) {
+		return cartService.deleteBookCart(userCartDTO.getCartid());
+	}
+	
+	
 }

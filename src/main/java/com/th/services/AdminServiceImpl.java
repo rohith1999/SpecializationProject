@@ -36,6 +36,11 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	BookRepository bookRepository;
 
+	/**
+	 * findByAdminId (finds a admin user using his admin id) 
+	 * @param admin consists of admin name, password and name
+	 * @return ModelAndView (the html page and the objects to be returned)
+	 */
 	@Override
 	public ModelAndView findByAdminId(Admin admin) {
 
@@ -78,6 +83,11 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
+	/**
+	 * removeBook (removes a book from book table)
+	 * @param idbook
+	 * @return ModelAndView (the html page and the objects to be returned)
+	 */
 	@Override
 	public ModelAndView removeBook(int idbook) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -92,6 +102,13 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
+	/**
+	 * updateBook (updates the book details onto the database)
+	 * @param book
+	 * @param file is the image of the book
+	 * @return ModelAndView (the html page and the objects to be returned)
+	 * @throws IOException
+	 */
 	@Override
 	public ModelAndView updateBook(Book book, @RequestParam("bookimg") MultipartFile file) throws IOException {
 
@@ -128,6 +145,13 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
+	/**
+	 * addBook (adds a new book to the book table) 
+	 * @param book
+	 * @param file file is the image of the book
+	 * @return ModelAndView (the html page and the objects to be returned)
+	 * @throws IOException
+	 */
 	@Override
 	public ModelAndView addBook(Book book, @RequestParam("bookimg") MultipartFile file) throws IOException {
 
@@ -135,20 +159,8 @@ public class AdminServiceImpl implements AdminService {
 		Optional<Book> searchBook = bookRepository.findById(book.getidbook());
 
 		if (!(searchBook.isPresent())) {
-
 			Book newBook = new Book();
-
-			newBook.setidbook(book.getidbook());
-			newBook.setBookname(book.getBookname());
-
-			newBook.setGenre(book.getGenre());
-
-			newBook.setBookprice(book.getBookprice());
-
-			newBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
-
-			newBook.setBookimage(file.getBytes());
-
+			convertBookModelToEntity(book, file, newBook);
 			Book newBookSave = bookRepository.save(newBook);
 			modelAndView.setViewName("success");
 			return modelAndView;
@@ -156,6 +168,26 @@ public class AdminServiceImpl implements AdminService {
 			modelAndView.setViewName("invalid");
 			return modelAndView;
 		}
+	}
+
+	/**
+	 * convertBookModelToEntity mapping book to new book
+	 * @param book
+	 * @param file
+	 * @param newBook
+	 * @throws IOException
+	 */
+	private void convertBookModelToEntity(Book book, MultipartFile file, Book newBook) throws IOException {
+		newBook.setidbook(book.getidbook());
+		newBook.setBookname(book.getBookname());
+
+		newBook.setGenre(book.getGenre());
+
+		newBook.setBookprice(book.getBookprice());
+
+		newBook.setBooktimestamp(new java.sql.Timestamp(System.currentTimeMillis()));
+
+		newBook.setBookimage(file.getBytes());
 	}
 
 }

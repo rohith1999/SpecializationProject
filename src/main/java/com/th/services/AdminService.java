@@ -17,7 +17,7 @@ import com.th.model.Book;
 public interface AdminService {
 	
 	/**
-	 * findByUserEmail (finds a admin user using his email id) 
+	 * findByAdminId (finds a admin user using his admin id) 
 	 * @param admin consists of admin name, password and name
 	 * @return ModelAndView (the html page and the objects to be returned)
 	 */

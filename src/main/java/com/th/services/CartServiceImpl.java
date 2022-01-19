@@ -28,6 +28,12 @@ public class CartServiceImpl implements CartService {
 	@Autowired
 	BookRepository bookRepository;
 
+	/**
+	 * addBookToCart (adds a book to a user's cart)
+	 * 
+	 * @param userCart consists of bookid, cartid, quantity and useremail
+	 * @return (a html page)
+	 */
 	@Override
 	public String addBookToCart(UserCart userCart) {
 
@@ -47,6 +53,13 @@ public class CartServiceImpl implements CartService {
 		return "success";
 	}
 
+	/**
+	 * getAllOrders (gets all books ordered by a user)
+	 * 
+	 * @param useremail
+	 * @param model adds objetcs to be dispalyed to a user
+	 * @return (a html page)
+	 */
 	@Override
 	public String getAllOrders(String useremail, Model model) {
 
@@ -68,6 +81,8 @@ public class CartServiceImpl implements CartService {
 
 				).get().getQuantity());
 
+				userCartDTO.setCartid(getCartId(cartList, bookItem.getidbook(), useremail));
+				
 				userCartDTOList.add(userCartDTO);
 
 			});
@@ -77,7 +92,7 @@ public class CartServiceImpl implements CartService {
 
 			return "cart";
 		} else {
-			return "redirect:users";
+			return "cart";
 		}
 
 	}
@@ -91,4 +106,15 @@ public class CartServiceImpl implements CartService {
 		return null;
 	}
 
+	/**
+	 * deleteBookCart (delete a book from cart)
+	 * @param cartid
+	 * @return String (a cart page)
+	 */
+	@Override
+	public String deleteBookCart(int cartid) {
+		userCartRepository.deleteById(cartid);
+		System.out.println(cartid);
+		return "cart";
+	}
 }

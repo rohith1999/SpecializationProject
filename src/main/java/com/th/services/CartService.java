@@ -2,6 +2,7 @@ package com.th.services;
 
 import org.springframework.ui.Model;
 
+import com.th.dto.UserCartDTO;
 import com.th.model.UserCart;
 
 /**
@@ -24,9 +25,16 @@ public interface CartService {
 	 * gets all books ordered by a user
 	 * 
 	 * @param useremail
-	 * @param model     adds objetcs to be dispalyed to a user
+	 * @param model adds objetcs to be dispalyed to a user
 	 * @return (a html page)
 	 */
 	public String getAllOrders(String useremail, Model model);
+	
+	/**
+	 * delete a book from cart
+	 * @param cartid
+	 * @return String (a cart page)
+	 */
+	public String deleteBookCart(int cartid);
 
 }
