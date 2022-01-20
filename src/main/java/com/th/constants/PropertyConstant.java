@@ -98,8 +98,18 @@ public class PropertyConstant {
 	public static final String USER_DELETE_CART = "/deletebookcart";
 	
 	/**
-	 * SEARCH search book
+	 * SEARCH searches a book
 	 */
 	public static final String SEARCH = "/search";
+	
+	/**
+	 * PAYMENT directs to payment page
+	 */
+	public static final String PAYMENT = "/payment"; 
+	
+	/**
+	 * GREETING directs to greetings page
+	 */
+	public static final String GREETING = "/greeting";
 
 }

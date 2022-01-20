@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/book_icon.png" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation Page</title>
+</head>
+<body style="text-align:center;background-color:#d3d3d3;">
+        <h2 style="padding-top:280px;color:#9ACD32;">THANKS <b th:text="${username}+', FOR VISITING AND ORDERING IN OUR WEBSITE ' "> </h2>
+        <br>
+        <li class="log_out" style="list-style-type:none;">
+            <b><a th:href="@{'/'}" title="Home Page" style="text-decoration:none;">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Logout</span>
+            </a></b>
+        </li>
+</body>
+</html>

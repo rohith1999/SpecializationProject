@@ -36,5 +36,22 @@ public interface CartService {
 	 * @return String (a cart page)
 	 */
 	public String deleteBookCart(int cartid);
+	
+	/**
+	 * cartToPaymentPage (move from cart to payment page)
+	 * @param totalPrice (cost of all books)
+	 * @param name (name of the user)
+	 * @param model 
+	 * @return String (a html page)
+	 */
+	public String cartToPaymentPage(double totalPrice,String name,Model model);
+	
+	/**
+	 * paymentToGreeting (move to greetings page from payment)
+	 * @param name (name of the user)
+	 * @param model 
+	 * @return String (a html page)
+	 */
+	public String paymentToGreeting(String name,Model model);
 
 }

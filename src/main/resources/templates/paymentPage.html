@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./img/book_icon.png" />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Page</title>
-</head>
-<body>
-<div class="sidebar">
-    <div class="logo-details">
-        <img src="./img/book_icon.png" />&nbsp;&nbsp;
-        <span class="logo_name">Book Store</span>
-    </div>
-    <ul class="nav-links">
-        <li>
-            <a href="#" class="active" title="Dashboard">
-                <i class='bx bx-grid-alt' ></i>
-                <span class="links_name">Payment Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="#netbank" title="Internet Banking">
-                <i class='bx bx-box' ></i>
-                <span class="links_name">Net Banking</span>
-            </a>
-        </li>
-        <li>
-            <a href="#cardPayment" title="Card Payment">
-                <!--<i class='bx bx-list-ul' ></i>-->
-                <i class="fab fa-cc-visa"></i>
-                <span class="links_name">Card Payment</span>
-            </a>
-        </li>
 
-        <li>
-            <a href="#upi" title="UPI Payment">
-                <!--<i class='bx bx-message' ></i>-->
-                <i class="fab fa-paypal"></i>
-                <span class="links_name">UPI Gateway</span>
-            </a>
-        </li>
-        <!--<li>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet " th:href="@{/css/style.css}">
+	<link rel="icon" href="./img/book_icon.png" />
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Payment Page</title>
+</head>
+
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<img src="./img/book_icon.png" />&nbsp;&nbsp;
+			<span class="logo_name">Book Store</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#" class="active" title="Dashboard">
+					<i class='bx bx-grid-alt'></i>
+					<span class="links_name">Payment Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#netbank" title="Internet Banking">
+					<i class='bx bx-box'></i>
+					<span class="links_name">Net Banking</span>
+				</a>
+			</li>
+			<li>
+				<a href="#cardPayment" title="Card Payment">
+					<!--<i class='bx bx-list-ul' ></i>-->
+					<i class="fab fa-cc-visa"></i>
+					<span class="links_name">Card Payment</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="#upi" title="UPI Payment">
+					<!--<i class='bx bx-message' ></i>-->
+					<i class="fab fa-paypal"></i>
+					<span class="links_name">UPI Gateway</span>
+				</a>
+			</li>
+			<!--<li>
             <a href="#favourites" title="Favourites">
                 <i class='bx bx-heart' ></i>
                 <span class="links_name">Favourites</span>
@@ -56,155 +58,167 @@
                 <span class="links_name">Setting</span>
             </a>
         </li>-->
-        <li class="log_out">
-            <a href="./signin.html" title="Logout">
-                <i class='bx bx-log-out'></i>
-                <span class="links_name">Log Out</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<section class="home-section">
-    <nav>
-        <div class="sidebar-button" style="text-align:center;">
-            <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Payment Page</span>
-        </div>
-        <!--<div class="search-box">
+			<li class="log_out">
+				<a th:href="@{'/'}" title="Logout">
+					<i class='bx bx-log-out'></i>
+					<span class="links_name">Log Out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button" style="text-align:center;">
+				<i class='bx bx-menu sidebarBtn'></i>
+				<span class="dashboard">Payment Page</span>
+			</div>
+			<!--<div class="search-box">
             <input type="text" placeholder="Search...">
             <i class='bx bx-search' ></i>
         </div>-->
-        <div class="profile-details">
-            <span style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>User</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="fas fa-user"></i>
+			<div class="profile-details">
+				<span style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b
+						th:text="${username}"></b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fas fa-user"></i>
 
-        </div>
-    </nav>
-    <div class="home-content">
-
-
-        <!--Copied Contents from the top-->
+			</div>
+		</nav>
+		<div class="home-content">
 
 
-        <br><br>
-        <h1 style="padding-left:310px;"  >Select your Payment Method</h1><br>
-        <div class="overview-boxes" onclick="#English" >
-            <div class="box"  style="cursor:pointer;">
-                <a href="#netbank" >
-                    <img src="./img/netbanking.png" height="100px" width="200px"></a>
-                </a>
-                <!--<i class='bx bx-cart-alt cart'></i>-->
-            </div>
-
-            <div class="box"  style="cursor:pointer;">
-                <a href="#cardPayment" >
-                    <img src="./img/card.png" height="100px" width="280px"></a>
-                </a>
-                <!--<i class='bx bx-cart-alt cart'></i>-->
-            </div>
-
-            <div class="box"  style="cursor:pointer;">
-                <a href="#upi">
-                    <img src="./img/gpay.png" height="100px" width="320px"></a>
-                </a>
-                <!--<i class='bx bx-cart-alt cart'></i>-->
-            </div>
-            <div class="box"  style="cursor:pointer;">
-                <a href="#upi">
-                    <img src="./img/phonepe.png" height="100px" width="200px"></a>
-                </a>
-                <!--<i class='bx bx-cart-alt cart'></i>-->
-            </div>
-        </div >
-
-        <br><br><br><br><br><br><br  id="netbank"><br><br><br>
-        <br>
-                                    <!--NET BANKING-->
-        <div >
-            <h1 style="padding-left:310px;" >Select your Banking Partner</h1><br>
-            <div class="overview-boxes">
-                <div class="box"  style="cursor:pointer;">
-                    <a href="https://www.axisbank.com/">
-                        <img src="./img/axis.png" height="100px" width="200px"></a>
-                    </a>
-                    <!--<i class='bx bx-cart-alt cart'></i>-->
-                </div>
-
-                <div class="box"  style="cursor:pointer;">
-                    <a href="https://canarabank.com/NET_Banking.aspx">
-                        <img src="./img/canara.png" height="100px" width="230px"></a>
-                    </a>
-                    <!--<i class='bx bx-cart-alt cart'></i>-->
-                </div>
-
-                <div class="box"  style="cursor:pointer;">
-                    <a href="https://netbanking.hdfcbank.com/netbanking/">
-                        <img src="./img/hdfc1.png" height="100px" width="200px"></a>
-                    </a>
-                    <!--<i class='bx bx-cart-alt cart'></i>-->
-                </div>
-                <div class="box"  style="cursor:pointer;">
-                    <a href="https://www.onlinesbi.com/">
-                        <img src="./img/sbi.png" height="100px" width="200px"></a>
-                    </a>
-                    <!--<i class='bx bx-cart-alt cart'></i>-->
-                </div>
-            </div >
-        </div>
-        <br><br><br><br>
-
-                                            <!--CARD PAYMENT-->
+			<!--Copied Contents from the top-->
 
 
-        <div class="overview-box" id="cardPayment">
-            <h2 align="center">Card Payment</h2>
-            <!--<hr align="center"/>-->
-            <h2 align="center" style="font-size:20px;">Pay using your Credit / Debit Card</h2>
+			<br><br>
 
-        </div>
-        <br>
+			<h1 style="text-align: center;" th:text="'Bill Amount: Rs. ' +${totalPrice}"></h1><br>
+			<h1 style="text-align: center;">Select your Payment Method</h1><br>
+			<div class="overview-boxes">
+				<div class="box" style="cursor:pointer;">
+					<a href="#netbank">
+						<img src="./img/netbanking.png" height="100px" width="200px"></a>
+					</a>
+					<!--<i class='bx bx-cart-alt cart'></i>-->
+				</div>
 
-        <!--BOOK SECTION ENDS HERE-->
-                                    <!--CARD DETAILS FORM-->
-        <div class="sales-boxes" style="padding-left:190px;">
-            <div class="recent-sales box" style="padding-left:1px;">
-                <div class="title" align="center">Enter card details</div>
-                <div class="sales-details" id="settings" style="padding-left:50px;<!--background-image:url('./img/card_bg.png');-->">
-                    <form action="greetings.html">
-                        <div class="input-field">
-                            <i class="fas fa-credit-card"></i>
-                            <input type="text" maxlength="16" placeholder="Card Number" required/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Card Holder Name" required style="text-transform:uppercase;"/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-calendar"></i>
-                            <input type="month" placeholder="Expiry Date" required/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" maxlength="3" placeholder="CVV" required/>
-                        </div>
-                        <input type="submit" class="btn" value="Make Payment"/>
-                    </form>
-                </div>
+				<div class="box" style="cursor:pointer;">
+					<a href="#cardPayment">
+						<img src="./img/card.png" height="100px" width="280px"></a>
+					</a>
+					<!--<i class='bx bx-cart-alt cart'></i>-->
+				</div>
 
-            </div>
-        </div>
-        <br><br>
-                            <!--UPI DETAILS FORM-->
-        <div class="sales-boxes" style="padding-left:190px;">
-            <div class="recent-sales box" style="padding-left:1px;">
-                <div class="title" align="center">Enter UPI details</div>
-                <div class="sales-details" id="upi" style="padding-left:50px;<!--background-image:url('./img/card_bg.png');-->">
-                    <form action="greetings.html">
-                        <div class="input-field">
-                            <i class="fab fa-paypal"></i>
-                            <input type="text" placeholder="Enter your UPI ID" required style="text-transform:uppercase;"/>
-                        </div>
-                        <!--<div class="input-field">
+				<div class="box" style="cursor:pointer;">
+					<a href="#upi">
+						<img src="./img/gpay.png" height="100px" width="320px"></a>
+					</a>
+					<!--<i class='bx bx-cart-alt cart'></i>-->
+				</div>
+				<div class="box" style="cursor:pointer;">
+					<a href="#upi">
+						<img src="./img/phonepe.png" height="100px" width="200px"></a>
+					</a>
+					<!--<i class='bx bx-cart-alt cart'></i>-->
+				</div>
+			</div>
+
+			<br><br><br><br><br><br><br id="netbank"><br><br><br>
+			<br>
+			<!--NET BANKING-->
+			<div>
+				<h1 style="padding-left:310px;">Select your Banking Partner</h1><br>
+				<div class="overview-boxes">
+					<div class="box" style="cursor:pointer;">
+						<a href="https://www.axisbank.com/">
+							<img src="./img/axis.png" height="100px" width="200px"></a>
+						</a>
+						<!--<i class='bx bx-cart-alt cart'></i>-->
+					</div>
+
+					<div class="box" style="cursor:pointer;">
+						<a href="https://canarabank.com/NET_Banking.aspx">
+							<img src="./img/canara.png" height="100px" width="230px"></a>
+						</a>
+						<!--<i class='bx bx-cart-alt cart'></i>-->
+					</div>
+
+					<div class="box" style="cursor:pointer;">
+						<a href="https://netbanking.hdfcbank.com/netbanking/">
+							<img src="./img/hdfc1.png" height="100px" width="200px"></a>
+						</a>
+						<!--<i class='bx bx-cart-alt cart'></i>-->
+					</div>
+					<div class="box" style="cursor:pointer;">
+						<a href="https://www.onlinesbi.com/">
+							<img src="./img/sbi.png" height="100px" width="200px"></a>
+						</a>
+						<!--<i class='bx bx-cart-alt cart'></i>-->
+					</div>
+				</div>
+			</div>
+			<br><br><br><br>
+
+			<!--CARD PAYMENT-->
+
+
+			<div class="overview-box" id="cardPayment">
+				<h2 align="center">Card Payment</h2>
+				<!--<hr align="center"/>-->
+				<h2 align="center" style="font-size:20px;">Pay using your Credit / Debit Card</h2>
+
+			</div>
+			<br>
+
+			<!--BOOK SECTION ENDS HERE-->
+			<!--CARD DETAILS FORM-->
+			<div class="sales-boxes" style=" display: flex;
+  justify-content: center;
+  align-items: center;">
+				<div class="recent-sales box" style="padding-left:1px;">
+					<div class="title" align="center">Enter card details</div>
+					<div class="sales-details" id="settings" style="padding-left:50px;">
+						<form action="/greeting" method="POST">
+							<div class="input-field">
+								<i class="fas fa-credit-card"></i>
+								<input type="number" maxlength="16" placeholder="Card Number" required />
+							</div>
+							<div class="input-field">
+								<i class="fas fa-user"></i>
+								<input type="text" placeholder="Card Holder Name" required
+									style="text-transform:uppercase;" />
+							</div>
+							<div class="input-field">
+								<i class="fas fa-calendar"></i>
+								<input type="month" id="month" placeholder="Expiry Date" required />
+							</div>
+							<div class="input-field">
+								<i class="fas fa-lock"></i>
+								<input type="password" maxlength="3" placeholder="CVV" required />
+							</div>
+
+							<input type="hidden" name="name" th:value="${username}" />
+
+							<input type="submit" class="btn" value="Make Payment" />
+						</form>
+					</div>
+
+				</div>
+			</div>
+			<br><br>
+			<!--UPI DETAILS FORM-->
+			<div class="sales-boxes" style="  display: flex;
+  justify-content: center;
+  align-items: center;">
+				<div class="recent-sales box" style="padding-left:1px;">
+					<div class="title" align="center">Enter UPI details</div>
+					<div class="sales-details" id="upi" style="padding-left:50px;">
+						<form action="/greeting" method="POST">
+							<div class="input-field">
+								<i class="fab fa-paypal"></i>
+								<input type="text" placeholder="Enter your UPI ID" required
+									style="text-transform:uppercase;" />
+							</div>
+							<!--<div class="input-field">
                             <i class="fas fa-calendar"></i>
                             <input type="month" placeholder="Expiry Date" required/>
                         </div>
@@ -212,24 +226,50 @@
                             <i class="fas fa-lock"></i>
                             <input type="password" maxlength="3" placeholder="CVV" required/>
                         </div>-->
-                        <input type="submit" class="btn" value="Make Payment"/>
-                    </form>
-                </div>
+							<input type="hidden" name="name" th:value="${username}" />
 
-            </div>
-        </div>
-    </div>
-    <br>
-</section>
-</div>
-<script>
-    function netbanking(){
-                document.getElementById('netbank').style.display = "block";
+							<input type="submit" class="btn" value="Make Payment" />
+						</form>
+					</div>
 
-            }
+				</div>
+			</div>
+		</div>
+		<br>
+	</section>
+	</div>
+	<script>
 
-</script>
+		var today = new Date();
+
+		var mm = today.getMonth() + 1; //January is 0!
+		var yyyy = today.getFullYear();
+
+
+
+
+
+
+
+		if (mm < 10) {
+			mm = '0' + mm;
+		}
+
+
+
+		today = yyyy + '-' + mm;
+		document.getElementById("month").setAttribute("min", today);
+
+
+
+		function netbanking() {
+			document.getElementById('netbank').style.display = "block";
+
+		}
+
+	</script>
 
 
 </body>
+
 </html>

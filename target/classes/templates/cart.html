@@ -6,10 +6,12 @@
 	<link rel="stylesheet " th:href="@{/css/style.css}">
 	<link rel="icon" href="./img/book_icon.png" />
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="/path/to/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
 	<title>Order Page</title>
 </head>
 
@@ -58,9 +60,8 @@
 				<span class="dashboard">Billing Dashboard</span>
 			</div>
 			<div class="profile-details">
-				<span
-					style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>User</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<i class="fas fa-user"></i>
+				<span style="font-size:20px; text-align: center;"><b th:text="'Hello, '+${username}">User</b></span>
+
 
 			</div>
 		</nav>
@@ -80,14 +81,16 @@
 
 								<h1 th:text="${cart.book.bookname}"></h1>
 								<h1 th:text="'quantity:'+${cart.quantity}"></h1>
-								
+
 								<form action="/deletebookcart" method="POST">
-								
-								<input type="hidden" name="cartid" th:value="${cart.cartid}" />
-				<!--				<input type="hidden" name="useremail" th:value="${user.useremail}" />
+
+									<input type="hidden" name="cartid" th:value="${cart.cartid}" />
+									<!--				<input type="hidden" name="useremail" th:value="${user.useremail}" />
 -->
 
-								<button type="submit" style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"><i class="fas fa-trash"></i></button>
+									<button type="submit"
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"><i
+											class="fas fa-trash"></i></button>
 
 								</form>
 							</label>
@@ -102,70 +105,64 @@
 				<br><br id="bill"><br><br>
 			</div>
 			<br>
-			<!--<h2 align="center">Your Bill</h2><br>
+
+			<h2 align="center">Your Bill</h2><br>
 			<div align="center">
-				<table class="table1" cellpadding="10" cellspacing="0.4px" width="60%">
+				<table class="table1" id="carttable" cellpadding="10" cellspacing="0.4px" width="60%">
 					<thead>
-						<th>S.No</th>
-						<th>&nbsp;ISBN</th>
+
+						<!--<th>Cart ID</th>-->
 						<th>Book Name</th>
 						<th>Quantity</th>
-						<th>Price</th>
+						<th>Book Price</th>
 						<th>Total Price</th>
+						<!--<th>Price</th>
+						<th>Total Price</th>-->
 						<!--<th >Travel Date</th>-->
-					<!--</thead>
+					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>PS_300</td>
-							<td>Ponniyin Selvan</td>
-							<td>2</td>
-							<td>300</td>
-							<td> 600</td>
+						<tr align="center" th:each="cart: ${cartList}">
+							<!--<td th:text=${cart.cartid}></td>-->
+							<td th:text=${cart.book.bookname}></td>
+							<td th:text=${cart.quantity}></td>
+							<td th:text=${cart.book.bookprice}></td>
+							<td th:text=${cart.quantity}*${cart.book.bookprice}></td>
+							<!--<td>300</td>
+							<td> 600</td>-->
 						</tr>
 						<tr>
-							<td>2</td>
-							<td>SS_300</td>
-							<td>Sunduvin Sanniyasam</td>
-							<td>2</td>
-							<td>300</td>
-							<td> 600</td>
+							<td><br></td>
 						</tr>
-						<tr>
-							<td>3</td>
-							<td>AS_300</td>
-							<td>Agni Siragugal</td>
-							<td>2</td>
-							<td>300</td>
-							<td> 600</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>SR_300</td>
-							<td>Siruvar Sirukathaigal</td>
-							<td>2</td>
-							<td>300</td>
-							<td> 600</td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<td colspan="4">Total Price</td>
+						<tr align="center">
+							<td>Total Price</td>
+							<td></td>
 							<td>(In Rs.)</td>
-							<td>2400</td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
+							<td><b th:text="${totalprice}"></b></td>
 						</tr>
 					</tbody>
 				</table><br>
-			</div>-->
-
-			<div align="center">
-				<label style="font-weight:bold;">If you wanna go to payment page, click here,</label><br>
-				<button type="submit" class="btn" onclick="location.href='paymentPage.html'">Go to Payment Page</button>
 			</div>
+			<br>
+		</div>
+			
+			<input type="button" onclick="tableToPdf()" value="download" style="margin:auto;
+  display:block; padding: 3px;" class="btn" />
+
+		</div>
+			<br>
+
+			<form action="/payment" method="POST">
+				<div align="center">
+					<h3 style="font-weight:bold;">If you wanna go to payment page, click here,</h3>
+					<input type="hidden" name="name" th:value="${username}" />
+					<input type="hidden" name="totalPrice" th:value="${totalprice}" />
+
+
+					<button type="submit" class="btn">Go to Payment Page</button><br><br>
+				</div>
+			</form>
+
+
 
 	</section>
 	<br><br><br><br><br><br>
@@ -185,6 +182,23 @@
 					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
 		</p>
 	</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+	<script>
+
+		function tableToPdf() {
+
+			var doc = new jsPDF();
+			doc.autoTable({html: '#carttable'});
+			doc.save("bill.pdf");
+
+
+		}
+	</script>
+
 </body>
 
 </html>

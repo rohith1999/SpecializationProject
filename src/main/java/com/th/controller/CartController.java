@@ -67,5 +67,22 @@ public class CartController {
 		return cartService.deleteBookCart(userCartDTO.getCartid());
 	}
 	
+	/**
+	 * cartToPaymentPage (move from cart to payment page)
+	 * @param totalPrice (cost of all books)
+	 * @param name (name of the user)
+	 * @param model 
+	 * @return String (a html page)
+	 */
+	@PostMapping(PropertyConstant.PAYMENT)
+	public String cartToPaymentPage(double totalPrice,String name,Model model) {
+		
+		return cartService.cartToPaymentPage(totalPrice,name,model);
+	}
+	
+	@PostMapping(PropertyConstant.GREETING)
+	public String paymentToGreeting(String name, Model model) {
+		return cartService.paymentToGreeting(name, model);
+	}
 	
 }

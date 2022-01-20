@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.th.dto.UserCartDTO;
 import com.th.model.Book;
+import com.th.model.User;
 import com.th.model.UserCart;
 import com.th.repository.BookRepository;
 import com.th.repository.UserCartRepository;
+import com.th.repository.UserRepository;
 import com.th.util.ImageUtil;
 
 @Service
@@ -27,6 +29,9 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	BookRepository bookRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	/**
 	 * addBookToCart (adds a book to a user's cart)
@@ -87,6 +92,17 @@ public class CartServiceImpl implements CartService {
 
 			});
 
+			double totalPrice=0;
+			for (UserCartDTO userdto : userCartDTOList) {
+				totalPrice += calculateTotalPrice(userdto.getQuantity(),userdto.getBook().getBookprice());
+			}
+
+			
+			model.addAttribute("totalprice",totalPrice);
+
+			User user = userRepository.findById(useremail).get();
+			
+			model.addAttribute("username", user.getName());
 			model.addAttribute("cartList", userCartDTOList);
 			model.addAttribute("imgUtil", new ImageUtil());
 
@@ -116,5 +132,45 @@ public class CartServiceImpl implements CartService {
 		userCartRepository.deleteById(cartid);
 		System.out.println(cartid);
 		return "cart";
+	}
+	
+	/**
+	 * calculateTotalPrice (calculates price using quantity and each book price)
+	 * @param quantity (number of books in cart)
+	 * @param bookprice (price of each book)
+	 * @return quantity * bookprice
+	 */
+	public double calculateTotalPrice(int quantity,double bookprice)
+	{
+		return (quantity * bookprice);
+	}
+
+	
+	/**
+	 * cartToPaymentPage (move from cart to payment page)
+	 * @param totalPrice (cost of all books)
+	 * @param name (name of the user)
+	 * @param model 
+	 * @return String (a html page)
+	 */
+	@Override
+	public String cartToPaymentPage(double totalPrice,String name,Model model) {
+		
+		model.addAttribute("username",name);
+		model.addAttribute("totalPrice",totalPrice);
+		
+		return "paymentPage";
+	}
+
+	/**
+	 * paymentToGreeting (move from payment to greetings page)
+	 * @param name (name of the user)
+	 * @param model 
+	 * @return String (a html page)
+	 */
+	@Override
+	public String paymentToGreeting(String name, Model model) {
+		model.addAttribute("username",name);
+		return "greetings";
 	}
 }
