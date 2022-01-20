@@ -94,7 +94,7 @@ public class AdminServiceImpl implements AdminService {
 
 		if (bookRepository.existsById(idbook)) {
 			bookRepository.deleteById(idbook);
-			modelAndView.setViewName("success");
+			modelAndView.setViewName("delete");
 			return modelAndView;
 		} else {
 			modelAndView.setViewName("invalid");
