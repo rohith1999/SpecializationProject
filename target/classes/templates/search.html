@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet " th:href="@{/css/style.css}">
+	<link rel="icon" href="./img/book_icon.png" />
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Book</title>
+</head>
+
+<body>
+
+	<div class="sidebar">
+		<div class="logo-details">
+			<!--<i class='bx bxl-c-plus-plus'></i>-->
+			<img src="./img/book_icon.png" />&nbsp;&nbsp;
+			<span class="logo_name">Book Store</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#" class="active" title="Dashboard">
+					<i class='bx bx-grid-alt'></i>
+					<span class="links_name">Dashboard</span>
+				</a>
+			</li>
+			
+			<li>
+				<a th:href="@{/orders/{useremail}(useremail = ${user.useremail})}" title="Order list">
+					<i class='bx bx-list-ul'></i>
+					<span class="links_name">Order list</span>
+
+				</a>
+			</li>
+			<li>
+				<a href="#footer" title="Contact">
+					<i class='bx bx-message'></i>
+					<span class="links_name">Contact</span>
+				</a>
+			</li>
+			<li class="log_out">
+				<a th:href="@{'/'}" title="Logout">
+					<i class='bx bx-log-out'></i>
+					<span class="links_name">Log Out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i>
+				<span class="dashboard">Dashboard</span>
+			</div>
+			<div class="profile-details" style="font-size:20px; font-weight: bold; text-align: center;"
+				th:text="'Hello, '+${user.name}">
+			</div>
+		</nav>
+		<div class="home-content">
+			<div class="sales-boxes">
+				<div class="recent-sales box">
+					<div class="title">Searched Book</div>
+							<div class="sales-details" style="">
+								<ul class="details" style="margin:20px ;">
+									<li class="topic">Book Name</li>
+									<li th:text="${display.bookname!=null}? ${display.bookname}:'NA'" />
+								</ul>
+								<ul class="details" style="margin:20px ;">
+									<li class="topic">Genre</li>
+									<li th:text="${display.genre!=null}? ${display.genre}:'NA'" />
+								</ul>
+								<ul class="details" style="margin:20px ;">
+									<li class="topic">Price</li>
+									<li th:text="${display.bookprice!=null}? ${display.bookprice}:'NA'" />
+								</ul>
+								<ul style="margin-left: 10px;">
+								<img th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(display.bookimage)}"
+									width="150px" height="200px;">
+								</ul>
+							</div>
+					</div>
+					<!--  <div class="button">
+                    <a href="#">See All</a>
+                </div>-->
+				</div>
+			</div>
+			<br><br><br><br><br><br><br><br><br>
+
+	<footer style="background-color:#0d3073;color:#fff;" id="footer">
+		<p style="padding-left:250px;">
+			<span style="text-align:center;padding-left:330px;font-size:15px;">We would love to hear the feedback from
+				you.</span><br>
+			<span style="font-size:15px;">Contact :</span><br>
+			<small style="font-size:12px;"><span><i class="fas fa-mobile"></i>&nbsp;&nbsp;Mobile :</span> +91
+				9597161471</small>
+			<small><span style="padding-left:720px;font-size:12px;"><i
+						class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Location : </span>Madurai</small>
+			<br>
+			<small><span style="font-size:12px;"><i
+						class="fas fa-envelope-square"></i>&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;:</span> <a
+					href="mailto:someone@example.com"
+					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
+		</p>
+	</footer>
+
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+
+		function myFunction() {
+			old_password = document.getElementById("oldpwd");
+			new_password = document.getElementById("newpwd");
+			alert(old_password);
+		}
+
+		function fav1() {
+			document.getElementById('fav1').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt1");
+			x.style.display = "block";
+		}
+		function cart1(bookname, quantity) {
+			var x = document.getElementById("cart-txt1");
+			x.style.display = "block";
+
+
+			document.querySelector("button[type='submit']").action = "/index";
+			document.querySelector("button[type='submit']").submit();
+
+			console.log(bookname);
+			console.log(quantity);
+
+
+
+		}
+		function fav2() {
+			document.getElementById('fav2').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt2");
+			x.style.display = "block";
+		}
+		function cart2() {
+			var x = document.getElementById("cart-txt2");
+			x.style.display = "block";
+		}
+		function fav3() {
+			document.getElementById('fav3').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt3");
+			x.style.display = "block";
+		}
+		function cart3() {
+			var x = document.getElementById("cart-txt3");
+			x.style.display = "block";
+		}
+		function fav4() {
+			document.getElementById('fav4').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt4");
+			x.style.display = "block";
+		}
+		function cart4() {
+			var x = document.getElementById("cart-txt4");
+			x.style.display = "block";
+		}
+		function fav5() {
+			document.getElementById('fav5').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt5");
+			x.style.display = "block";
+		}
+		function cart5() {
+			var x = document.getElementById("cart-txt5");
+			x.style.display = "block";
+		}
+		function fav6() {
+			document.getElementById('fav6').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt6");
+			x.style.display = "block";
+		}
+		function cart6() {
+			var x = document.getElementById("cart-txt6");
+			x.style.display = "block";
+		}
+		function fav7() {
+			document.getElementById('fav7').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt7");
+			x.style.display = "block";
+		}
+		function cart7() {
+			var x = document.getElementById("cart-txt7");
+			x.style.display = "block";
+		}
+		function fav8() {
+			document.getElementById('fav8').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt8");
+			x.style.display = "block";
+		}
+		function cart8() {
+			var x = document.getElementById("cart-txt8");
+			x.style.display = "block";
+		}
+		function fav9() {
+			document.getElementById('fav9').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt9");
+			x.style.display = "block";
+		}
+		function cart9() {
+			var x = document.getElementById("cart-txt9");
+			x.style.display = "block";
+		}
+		function fav10() {
+			document.getElementById('fav10').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt10");
+			x.style.display = "block";
+		}
+		function cart10() {
+			var x = document.getElementById("cart-txt10");
+			x.style.display = "block";
+		}
+		function fav11() {
+			document.getElementById('fav11').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt11");
+			x.style.display = "block";
+		}
+		function cart11() {
+			var x = document.getElementById("cart-txt11");
+			x.style.display = "block";
+		}
+		function fav12() {
+			document.getElementById('fav12').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt12");
+			x.style.display = "block";
+		}
+		function cart12() {
+			var x = document.getElementById("cart-txt12");
+			x.style.display = "block";
+		}
+		function fav13() {
+			document.getElementById('fav13').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt13");
+			x.style.display = "block";
+		}
+		function cart13() {
+			var x = document.getElementById("cart-txt13");
+			x.style.display = "block";
+		}
+		function fav14() {
+			document.getElementById('fav14').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt14");
+			x.style.display = "block";
+		}
+		function cart14() {
+			var x = document.getElementById("cart-txt14");
+			x.style.display = "block";
+		}
+		function fav15() {
+			document.getElementById('fav15').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt15");
+			x.style.display = "block";
+		}
+		function cart15() {
+			var x = document.getElementById("cart-txt15");
+			x.style.display = "block";
+		}
+		function fav16() {
+			document.getElementById('fav16').src = './img/heart1.png';
+			var x = document.getElementById("fav-txt16");
+			x.style.display = "block";
+		}
+		function cart16() {
+			var x = document.getElementById("cart-txt16");
+			x.style.display = "block";
+		}
+		function inc1() {
+			document.getElementById('demoInput1').stepUp();
+		}
+		function dec1() {
+			document.getElementById('demoInput1').stepDown();
+		}
+		function inc2() {
+			document.getElementById('demoInput2').stepUp();
+		}
+		function dec2() {
+			document.getElementById('demoInput2').stepDown();
+		}
+		function inc3() {
+			document.getElementById('demoInput3').stepUp();
+		}
+		function dec3() {
+			document.getElementById('demoInput3').stepDown();
+		}
+		function inc4() {
+			document.getElementById('demoInput4').stepUp();
+		}
+		function dec4() {
+			document.getElementById('demoInput4').stepDown();
+		}
+		function inc5() {
+			document.getElementById('demoInput5').stepUp();
+		}
+		function dec5() {
+			document.getElementById('demoInput5').stepDown();
+		}
+		function inc6() {
+			document.getElementById('demoInput6').stepUp();
+		}
+		function dec6() {
+			document.getElementById('demoInput6').stepDown();
+		}
+		function inc7() {
+			document.getElementById('demoInput7').stepUp();
+		}
+		function dec7() {
+			document.getElementById('demoInput7').stepDown();
+		}
+		function inc8() {
+			document.getElementById('demoInput8').stepUp();
+		}
+		function dec8() {
+			document.getElementById('demoInput8').stepDown();
+		}
+		function inc9() {
+			document.getElementById('demoInput9').stepUp();
+		}
+		function dec9() {
+			document.getElementById('demoInput9').stepDown();
+		}
+		function inc10() {
+			document.getElementById('demoInput10').stepUp();
+		}
+		function dec10() {
+			document.getElementById('demoInput10').stepDown();
+		}
+		function inc10() {
+			document.getElementById('demoInput10').stepUp();
+		}
+		function dec10() {
+			document.getElementById('demoInput10').stepDown();
+		}
+		function inc11() {
+			document.getElementById('demoInput11').stepUp();
+		}
+		function dec11() {
+			document.getElementById('demoInput11').stepDown();
+		}
+		function inc12() {
+			document.getElementById('demoInput12').stepUp();
+		}
+		function dec12() {
+			document.getElementById('demoInput12').stepDown();
+		}
+		function inc13() {
+			document.getElementById('demoInput13').stepUp();
+		}
+		function dec13() {
+			document.getElementById('demoInput13').stepDown();
+		}
+		function inc14() {
+			document.getElementById('demoInput14').stepUp();
+		}
+		function dec14() {
+			document.getElementById('demoInput14').stepDown();
+		}
+		function inc15() {
+			document.getElementById('demoInput15').stepUp();
+		}
+		function dec15() {
+			document.getElementById('demoInput15').stepDown();
+		}
+		function inc16() {
+			document.getElementById('demoInput16').stepUp();
+		}
+		function dec16() {
+			document.getElementById('demoInput16').stepDown();
+		}
+
+	</script>
+
+</body>
+
+</html>

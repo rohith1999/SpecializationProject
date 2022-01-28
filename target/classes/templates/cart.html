@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet " th:href="@{/css/style.css}">
+	<link rel="icon" href="./img/book_icon.png" />
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+	<title>Order Page</title>
+</head>
+
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<!--<i class='bx bxl-c-plus-plus'></i>-->
+			&nbsp;&nbsp;
+			<span class="logo_name">Book Store</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#" class="active" title="Dashboard">
+					<i class='bx bx-grid-alt'></i>
+					<span class="links_name">Ordered Books</span>
+				</a>
+			</li>
+			<li>
+				<a href="#bill" title="Your Bill">
+					<i class="fas fa-file-invoice-dollar"></i>
+					<span class="links_name">Bill</span>
+				</a>
+			</li>
+
+
+			<li>
+				<a href="#footer" title="Contact">
+					<i class='bx bx-message'></i>
+					<span class="links_name">Contact</span>
+				</a>
+			</li>
+
+
+			<li class="log_out">
+				<a th:href="@{'/'}" title="Logout">
+					<i class='bx bx-log-out'></i>
+					<span class="links_name">Log Out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i>
+				<span class="dashboard">Billing Dashboard</span>
+			</div>
+			<div class="profile-details">
+				<span style="font-size:20px; text-align: center;"><b th:text="'Hello, '+${username}">User</b></span>
+
+
+			</div>
+		</nav>
+		<div class="home-content">
+			<h1 style="padding-left:450px;">Your Books</h1><br>
+			<div class="overview-boxes">
+				<div class="box" style="margin: 5px;" th:each="cart: ${cartList}">
+					<a>
+
+						<div class="right-side">
+							<div class="box-topic" align="center" title="Pooniyin Selvan was written by Kalki"
+								style="cursor:pointer;">
+								<img th:src="'data:image/jpeg;base64,' + ${imgUtil.getImgData(cart.book.bookimage)}"
+									width="150px" height="200px;">
+							</div>
+							<label style="text-align:center">
+
+								<h1 th:text="${cart.book.bookname}"></h1>
+								<h1 th:text="'quantity:'+${cart.quantity}"></h1>
+
+								<form action="/deletebookcart" method="POST">
+
+									<input type="hidden" name="cartid" th:value="${cart.cartid}" />
+									<!--				<input type="hidden" name="useremail" th:value="${user.useremail}" />
+-->
+
+									<button type="submit"
+										style="background: none;color: inherit;border: none;padding-left: 30px;font: inherit;cursor: pointer;outline: inherit;"><i
+											class="fas fa-trash"></i></button>
+
+								</form>
+							</label>
+							<label style="text-align:center; ">
+								<h4 th:text="'Rs. '+${cart.book.bookprice}"></h4>
+							</label><br>
+
+
+						</div>
+
+				</div>
+				<br><br id="bill"><br><br>
+			</div>
+			<br>
+
+			<h2 align="center">Your Bill</h2><br>
+			<div align="center">
+				<table class="table1" id="carttable" cellpadding="10" cellspacing="0.4px" width="60%">
+					<thead>
+
+						<!--<th>Cart ID</th>-->
+						<th>Book Name</th>
+						<th>Quantity</th>
+						<th>Book Price</th>
+						<th>Total Price</th>
+						<!--<th>Price</th>
+						<th>Total Price</th>-->
+						<!--<th >Travel Date</th>-->
+					</thead>
+					<tbody>
+						<tr align="center" th:each="cart: ${cartList}">
+							<!--<td th:text=${cart.cartid}></td>-->
+							<td th:text=${cart.book.bookname}></td>
+							<td th:text=${cart.quantity}></td>
+							<td th:text=${cart.book.bookprice}></td>
+							<td th:text=${cart.quantity}*${cart.book.bookprice}></td>
+							<!--<td>300</td>
+							<td> 600</td>-->
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr align="center">
+							<td>Total Price</td>
+							<td></td>
+							<td>(In Rs.)</td>
+							<td><b th:text="${totalprice}"></b></td>
+						</tr>
+					</tbody>
+				</table><br>
+			</div>
+			<br>
+		</div>
+			
+			<input type="button" onclick="tableToPdf()" value="download" style="margin:auto;
+  display:block; padding: 3px;" class="btn" />
+
+		</div>
+			<br>
+
+			<form action="/payment" method="POST">
+				<div align="center">
+					<h3 style="font-weight:bold;">If you wanna go to payment page, click here,</h3>
+					<input type="hidden" name="name" th:value="${username}" />
+					<input type="hidden" name="totalPrice" th:value="${totalprice}" />
+
+
+					<button type="submit" class="btn">Go to Payment Page</button><br><br>
+				</div>
+			</form>
+
+
+
+	</section>
+	<br><br><br><br><br><br>
+	<footer style="background-color:#0d3073;color:#fff;" id="footer">
+		<p style="padding-left:250px;">
+			<span style="text-align:center;padding-left:330px;font-size:15px;">We would love to hear the feedback from
+				you.</span><br>
+			<span style="font-size:15px;">Contact :</span><br>
+			<small style="font-size:12px;"><span><i class="fas fa-mobile"></i>&nbsp;&nbsp;Mobile :</span> +91
+				9597161471</small>
+			<small><span style="padding-left:720px;font-size:12px;"><i
+						class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Location : </span>Madurai</small>
+			<br>
+			<small><span style="font-size:12px;"><i
+						class="fas fa-envelope-square"></i>&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;:</span> <a
+					href="mailto:someone@example.com"
+					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
+		</p>
+	</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+	<script>
+
+		function tableToPdf() {
+
+			var doc = new jsPDF();
+			doc.autoTable({html: '#carttable'});
+			doc.save("bill.pdf");
+
+
+		}
+	</script>
+
+</body>
+
+</html>

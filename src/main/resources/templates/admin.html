@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet " th:href="@{/css/style.css}">
+	<link rel="icon" href="./img/book_icon.png" />
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
+		type="text/css" />
+
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin DashBoard</title>
+</head>
+
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<!--<i class='bx bxl-c-plus-plus'></i>-->
+			<img src="./img/book_icon.png" />&nbsp;&nbsp;
+			<span class="logo_name">Book Store</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#" class="active" title="Dashboard">
+					<i class='bx bx-grid-alt'></i>
+					<span class="links_name">Admin Dashboard</span>
+				</a>
+			</li>
+			<!--ADD A BOOK-->
+			<li>
+				<a href="#addBook" title="Books">
+					<i class='bx bx-box'></i>
+					<span class="links_name">Add Book</span>
+				</a>
+			</li>
+			<!--UPDATE BOOK-->
+			<li>
+				<a href="#updateBook" title="Order list">
+					<i class='bx bx-list-ul'></i>
+					<span class="links_name">Update Book</span>
+				</a>
+			</li>
+
+			<!--SEARCH A BOOK-->
+			<li>
+				<a href="#footer" title="Contact">
+					<i class='bx bx-message'></i>
+					<span class="links_name">Search a Book</span>
+				</a>
+			</li>
+			<!--REMOVE A BOOK-->
+			<li>
+				<a href="#removeBook" title="Total Order">
+					<i class='bx bx-book-alt'></i>
+					<span class="links_name">Remove Book</span>
+				</a>
+			</li>
+			<!--LOGOUT-->
+			<li class="log_out">
+				<a th:href="@{'/'}" title="Logout">
+					<i class='bx bx-log-out'></i>
+					<span class="links_name">Log Out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i>
+				<span class="dashboard">Dashboard</span>
+			</div>
+			<!--<div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search' ></i>-->
+			</div>
+			<div class="profile-details">
+				<span
+					style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b
+						th:text="'Hello, ' + ${admin.adminname}" /></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="fas fa-user"></i>
+
+			</div>
+		</nav>
+		<div class="home-content">
+			<div class="sales-boxes">
+				<div class="recent-sales box">
+					<div class="title">Recently Added books</div>
+					<div class="sales-details">
+						<ul class="details">
+							<li class="topic">Book Name</li>
+
+							<li th:each="book: ${bookTimeStamp}">
+								<td th:text="${book.bookname}" />
+							</li>
+
+
+
+						</ul>
+						<ul class="details">
+							<li class="topic">Genre</li>
+							<li th:each="book: ${books}">
+								<td th:text="${book.genre}" />
+							</li>
+						</ul>
+						<ul class="details">
+							<li class="topic">Price</li>
+							<li th:each="book: ${books}">
+								<td th:text="${book.bookprice}" />
+							</li>
+						</ul>
+					</div>
+					<div class="button">
+						<a href="#">See All</a>
+					</div>
+				</div>
+				<div class="top-sales box">
+					<div class="title">Books Sorted in price</div>
+					<ul class="top-sales-details" th:each="book: ${books}">
+
+						<li>
+							<a href="#">
+								<span class="product" th:text="${book.bookname}"> </span>
+							</a>
+							<span class="price" th:text="${book.bookprice}"></span>
+						</li>
+
+
+
+					</ul>
+				</div>
+			</div>
+			<br><br>
+			<br><br><br>
+		</div>
+
+		
+		<div class="home-content" id="updateBook">
+			<div class="sales-boxes" style="padding-left:240px;">
+				<div class="recent-sales box">
+				
+				<!--ADD  A  BOOK-->
+
+					<div id="addBook" class="title" align="center">Add a Book</div>
+
+
+					<form action="/admin/addbook" method="POST" enctype="multipart/form-data">
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="number" placeholder="Enter Book ID" name="idbook" required />
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="text" placeholder="Enter Book Name" name="bookname" required/>
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="number" placeholder="Enter Price" name="bookprice" required />
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="text" placeholder="Enter Genre" name="genre" required/>
+						</div>
+
+						<div>
+						
+							<input type="file" name="bookimg" accept="image/png, image/jpeg"  onchange="previewFile()" required><br>
+
+						</div>
+						<br>
+						<div>
+							<img id="previewImage" src="./img/default.jpg" height="200" alt="Image preview...">
+						</div>
+						<input type="submit" class="btn" value="Add Book" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-content" id="removeBook">
+			<div class="sales-boxes" style="padding-left:240px;">
+				<div class="recent-sales box">
+				
+				
+				
+
+					<!--UPDATE  A  BOOK-->
+
+					<div class="title" align="center">Update Book</div>
+
+
+					<form action="/admin/update" method="POST" enctype="multipart/form-data">
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="number" placeholder="Enter Book ID" name="idbook" required />
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="text" placeholder="Enter Book Name" name="bookname" />
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="number" placeholder="Enter Price" name="bookprice" />
+						</div>
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="text" placeholder="Enter Genre" name="genre" />
+						</div>
+
+						<div>
+						
+							<input type="file" name="bookimg" accept="image/png, image/jpeg"  onchange="previewFile()"><br>
+
+						</div>
+						<br>
+						<div>
+							<img id="previewImage" src="./img/default.jpg" height="200" alt="Image preview...">
+						</div>
+						<input type="submit" class="btn" value="update Book" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-content" id="removeBook">
+			<div class="sales-boxes" style="padding-left:240px;">
+				<div class="recent-sales box">
+
+					<!--ADD  A  BOOK-->
+
+					<div class="title" align="center">Remove Book</div>
+					<form action="/admin/delete" method="POST">
+						<div class="input-field">
+							<i class="fas fa-suer"></i>
+							<input type="text" placeholder="Enter Book ID" name="idbook" required />
+						</div>
+
+						<div>
+							<input type="submit" class="btn" value="Remove Book" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<br><br>
+	<footer style="background-color:#0d3073;color:#fff;" id="footer">
+		<p style="padding-left:250px;">
+			<span style="text-align:center;padding-left:330px;font-size:15px;">We would love to hear the feedback from
+				you.</span><br>
+			<span style="font-size:15px;">Contact :</span><br>
+			<small style="font-size:12px;"><span><i class="fas fa-mobile"></i>&nbsp;&nbsp;Mobile :</span> +91
+				9597161471</small>
+			<small><span style="padding-left:720px;font-size:12px;"><i
+						class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Location : </span>Madurai</small>
+			<br>
+			<small><span style="font-size:12px;"><i
+						class="fas fa-envelope-square"></i>&nbsp;&nbsp;Send&nbsp;&nbsp;&nbsp;:</span> <a
+					href="mailto:someone@example.com"
+					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
+		</p>
+	</footer>
+
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+
+		//preview image
+		function previewFile() {
+			var preview = document.getElementById("previewImage");
+			var file = document.querySelector('input[type=file]').files[0];
+			var reader = new FileReader();
+
+			reader.onloadend = function () {
+				preview.src = reader.result;
+			}
+
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+			}
+		}
+
+
+
+		sidebarBtn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+
+		function myFunction() {
+			alert("Password Changed Successfully");
+		}
+	</script>
+
+</body>
+
+</html>
