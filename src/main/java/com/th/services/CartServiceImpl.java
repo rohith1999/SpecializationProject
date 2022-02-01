@@ -73,6 +73,11 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public String getAllOrders(String useremail, Model model) {
 
+		return getCartlistById(useremail,"cart", model);
+
+	}
+
+	private String getCartlistById(String useremail,String returnPage, Model model) {
 		List<UserCart> cartList = userCartRepository.findByUseremail(useremail);
 		List<Book> books = new ArrayList<>();
 
@@ -92,30 +97,29 @@ public class CartServiceImpl implements CartService {
 				).get().getQuantity());
 
 				userCartDTO.setCartid(getCartId(cartList, bookItem.getidbook(), useremail));
-				
+
 				userCartDTOList.add(userCartDTO);
 
 			});
 
-			double totalPrice=0;
+			double totalPrice = 0;
 			for (UserCartDTO userdto : userCartDTOList) {
-				totalPrice += calculateTotalPrice(userdto.getQuantity(),userdto.getBook().getBookprice());
+				totalPrice += calculateTotalPrice(userdto.getQuantity(), userdto.getBook().getBookprice());
 			}
 
-			
-			model.addAttribute("totalprice",totalPrice);
+			model.addAttribute("totalprice", totalPrice);
 
 			User user = userRepository.findById(useremail).get();
-			
+
 			model.addAttribute("username", user.getName());
 			model.addAttribute("cartList", userCartDTOList);
 			model.addAttribute("imgUtil", new ImageUtil());
+			model.addAttribute("useremail", useremail);
 
-			return "cart";
+			return returnPage;
 		} else {
 			return "cart";
 		}
-
 	}
 
 	private Integer getCartId(List<UserCart> cartList, int bookid, String useremail) {
@@ -159,11 +163,13 @@ public class CartServiceImpl implements CartService {
 	 * @return String (a html page)
 	 */
 	@Override
-	public String cartToPaymentPage(double totalPrice,String name,Model model) {
+	public String cartToPaymentPage(double totalPrice,String name, String useremail, Model model) {
 		
 		model.addAttribute("username",name);
+		model.addAttribute("useremail",useremail);
 		model.addAttribute("totalPrice",totalPrice);
 		
+		System.out.println(useremail+" "+totalPrice);
 		return "paymentPage";
 	}
 
@@ -174,8 +180,12 @@ public class CartServiceImpl implements CartService {
 	 * @return String (a html page)
 	 */
 	@Override
-	public String paymentToGreeting(String name, Model model) {
-		model.addAttribute("username",name);
-		return "greetings";
+	public String paymentToGreeting(double totalPrice, String name,String useremail, Model model) {
+		/*
+		 * model.addAttribute("username",name); model.addAttribute("useremail",
+		 * useremail); model.addAttribute("totalPrice",totalPrice);
+		 */		
+		return getCartlistById(useremail,"greetings", model);
+		
 	}
 }

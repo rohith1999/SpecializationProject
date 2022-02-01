@@ -75,14 +75,14 @@ public class CartController {
 	 * @return String (a html page)
 	 */
 	@PostMapping(PropertyConstant.PAYMENT)
-	public String cartToPaymentPage(double totalPrice,String name,Model model) {
+	public String cartToPaymentPage(double totalPrice,String name,String useremail, Model model) {
 		
-		return cartService.cartToPaymentPage(totalPrice,name,model);
+		return cartService.cartToPaymentPage(totalPrice,name,useremail,model);
 	}
 	
 	@PostMapping(PropertyConstant.GREETING)
-	public String paymentToGreeting(String name, Model model) {
-		return cartService.paymentToGreeting(name, model);
+	public String paymentToGreeting(double totalPrice, String name, String useremail, Model model) {
+		return cartService.paymentToGreeting(totalPrice, name,useremail, model);
 	}
 	
 }

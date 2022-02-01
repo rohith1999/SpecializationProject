@@ -44,7 +44,7 @@ public interface CartService {
 	 * @param model 
 	 * @return String (a html page)
 	 */
-	public String cartToPaymentPage(double totalPrice,String name,Model model);
+	public String cartToPaymentPage( double totalPrice,String useremail,String name,Model model);
 	
 	/**
 	 * paymentToGreeting (move to greetings page from payment)
@@ -52,6 +52,6 @@ public interface CartService {
 	 * @param model 
 	 * @return String (a html page)
 	 */
-	public String paymentToGreeting(String name,Model model);
+	public String paymentToGreeting(double totalPrice, String useremail, String name,Model model);
 
 }

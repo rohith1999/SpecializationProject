@@ -197,7 +197,9 @@
 							</div>
 
 							<input type="hidden" name="name" th:value="${username}" />
-
+							<input type="hidden" name="useremail" th:value="${useremail}" />
+							<input type="hidden" name="totalPrice" th:value="${totalPrice}" />
+							
 							<input type="submit" class="btn" value="Make Payment" />
 						</form>
 					</div>
@@ -227,7 +229,8 @@
                             <input type="password" maxlength="3" placeholder="CVV" required/>
                         </div>-->
 							<input type="hidden" name="name" th:value="${username}" />
-
+							<input type="hidden" name="useremail" th:value="${useremail}" />
+							<input type="hidden" name="totalPrice" th:value="${totalPrice}" />
 							<input type="submit" class="btn" value="Make Payment" />
 						</form>
 					</div>

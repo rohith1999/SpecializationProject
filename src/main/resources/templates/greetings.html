@@ -2,21 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="icon" href="./img/book_icon.png" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation Page</title>
+    <style>
+.table1 tr:nth-child(even){
+	background-color: #f2f2f2;			
+}
+table{
+	background-color:#DCDCDC;
+	border-radius:2px;
+}
+.table1 th{
+color:white;
+background-color:black;
+border-radius:10px;
+}
+    </style><!--#f2f2f2-->
 </head>
 <body style="text-align:center;background-color:#d3d3d3;">
-        <h2 style="padding-top:280px;color:#9ACD32;">THANKS <b th:text="${username}+', FOR VISITING AND ORDERING IN OUR WEBSITE ' "> </h2>
+        <h2 style="padding-top:280px;color:#03A89E; text-shadow: 2px #000">THANKS <b th:text="${username}+', FOR VISITING AND ORDERING IN OUR WEBSITE ' "> </h2>
+        <!--<h2 style="padding-top:280px;color:#03A89E; text-shadow: 2px #000">THANKS <b th:text="${username}">, FOR VISITING AND ORDERING IN OUR WEBSITE </h2>-->
         <br>
+        <h3>Your ordered books</h3><br>
+        <div align="center">
+				<table class="table1" id="carttable" cellpadding="10" cellspacing="0.4px" width="60%">
+					<thead>
+						<tr>
+							<th>Book Name</th>
+							<th>Quantity</th>
+							<th>Book Price</th>
+							<th>Total Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr align="center" th:each="cart: ${cartList}" >
+							<td th:text=${cart.book.bookname}></td>
+							<td th:text=${cart.quantity}></td>
+							<td th:text=${cart.book.bookprice}></td>
+							<td th:text=${cart.quantity}*${cart.book.bookprice}></td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+					
+						<tr align="center" rowspan="3">
+							<td>Total Price Paid</td>
+							<td></td>
+							<td>(In Rs.)</td>
+							<td><b th:text="${totalprice}"></b></td>
+						</tr>
+					</tbody>
+				</table><br>
+		</div>
+			
+		<input type="button" onclick="tableToPdf()" value="download" style="margin:auto;
+  display:block; padding: 3px;" class="btn" title="Click to Download your receipt"/><br>
+  
         <li class="log_out" style="list-style-type:none;">
             <b><a th:href="@{'/'}" title="Home Page" style="text-decoration:none;">
                 <i class='bx bx-log-out'></i>
                 <span class="links_name">Logout</span>
             </a></b>
         </li>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+	<script>
+
+		function tableToPdf() {
+
+			var doc = new jsPDF();
+			doc.autoTable({html: '#carttable'});
+			doc.save("bookbill.pdf");
+
+
+		}
+	</script>
 </body>
 </html>

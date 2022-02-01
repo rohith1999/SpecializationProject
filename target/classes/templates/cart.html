@@ -145,8 +145,8 @@
 			<br>
 		</div>
 			
-			<input type="button" onclick="tableToPdf()" value="download" style="margin:auto;
-  display:block; padding: 3px;" class="btn" />
+			<!--<input type="button" onclick="tableToPdf()" value="download" style="margin:auto;
+  display:block; padding: 3px;" class="btn" />-->
 
 		</div>
 			<br>
@@ -156,7 +156,7 @@
 					<h3 style="font-weight:bold;">If you wanna go to payment page, click here,</h3>
 					<input type="hidden" name="name" th:value="${username}" />
 					<input type="hidden" name="totalPrice" th:value="${totalprice}" />
-
+					<input type="hidden" name="useremail" th:value="${useremail}" />
 
 					<button type="submit" class="btn">Go to Payment Page</button><br><br>
 				</div>
