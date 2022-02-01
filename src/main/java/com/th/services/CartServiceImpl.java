@@ -136,7 +136,7 @@ public class CartServiceImpl implements CartService {
 	public String deleteBookCart(int cartid) {
 		userCartRepository.deleteById(cartid);
 		System.out.println(cartid);
-		return "cart";
+		return "delete";
 	}
 	
 	/**
