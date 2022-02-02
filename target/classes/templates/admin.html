@@ -229,7 +229,7 @@
 			<div class="sales-boxes" style="padding-left:240px;">
 				<div class="recent-sales box">
 
-					<!--ADD  A  BOOK-->
+					<!--REMOVE  A  BOOK-->
 
 					<div class="title" align="center">Remove Book</div>
 					<form action="/admin/delete" method="POST">
@@ -239,7 +239,7 @@
 						</div>
 
 						<div>
-							<input type="submit" class="btn" value="Remove Book" />
+							<input type="submit" class="btn" value="Remove Book" onclick="return confirm('Are you sure that you want to delete ? ')" />
 						</div>
 					</form>
 				</div>

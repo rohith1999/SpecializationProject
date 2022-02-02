@@ -8,6 +8,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>DashBoard</title>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">-->
 </head>
 
 <body>
@@ -79,8 +80,8 @@
 				<form action="/search" method="GET">
 				<div class="search-box">
 				<input type="hidden" name="useremail" th:value="${user.useremail}" />
-				<input type = "text" name="bname" th:value="${bname}" placeholder="Enter the book name">
-				<button type="submit" value="submit" class='bx bx-search'>
+				<input type = "text" class="search1" name="bname" th:value="${bname}" placeholder="Enter the book name">
+				<!--<button type="submit" value="submit" class='bx bx-search'>-->
 				</form>
 			</div>
 			<div class="profile-details" style="font-size:20px; font-weight: bold; text-align: center;"
@@ -138,6 +139,7 @@
 			<br><br>
 		<!--	<h1 style="padding-left:380px;">Choose By Language</h1><br>
 			<div class="overview-boxes" onclick="#English">
+			
 				<div class="box" style="cursor:pointer;">
 					<a>
 						<div class="right-side" id="Books" onclick="#books">
@@ -238,7 +240,7 @@
 			<br><br><br>
 			<!--TAMIL BOOKS-->
 			<h1 style="text-align:center" id="books">Books</h1><br>
-			<div class="overview-boxes">
+			<div class="overview-boxes" id="userTbl">
 				<!--BOOK-->
 				<div class="box" style="margin: 5px;" th:each="book: ${books}">
 					<a>
@@ -344,7 +346,7 @@
 					style="color:#fff;text-decoration:none;">team2_specialization_training@thbs.com</a></small>
 		</p>
 	</footer>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
 	<script>
 		let sidebar = document.querySelector(".sidebar");
 		let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -618,8 +620,23 @@
 		function dec16() {
 			document.getElementById('demoInput16').stepDown();
 		}
-
+		
+		$(document).ready(function(){
+			$('.search1').on('keyup',function(){
+				var searchTerm = $(this).val().toLowerCase();
+				$('#userTbl .box').each(function(){
+					var lineStr = $(this).text().toLowerCase();
+					console.log(lineStr);
+					if(lineStr.indexOf(searchTerm) === -1){
+						$(this).hide();
+					}else{
+						$(this).show();
+					}
+				});
+			});
+		});
 	</script>
+	
 
 </body>
 
