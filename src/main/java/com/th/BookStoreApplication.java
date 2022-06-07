@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 /**
  * BookStoreApplication class helps in running the application
  * 
- * @author Rohith S
+ * @author Rohith Surya Kumar
  *
  */
 @SpringBootApplication
